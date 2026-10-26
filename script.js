@@ -1,1845 +1,1050 @@
 ```javascript
-/* =========================================
-   WEBLAB — APPLICATION
-   HTML / CSS / JavaScript Learning Hub
-========================================= */
+"use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   COURSE DATA
+========================= */
 
-    /* =====================================
-       1. COURSE DATA
-    ===================================== */
-
-    const courses = {
-
-        html: {
-            title: "آموزش HTML",
-            description: "یادگیری ساختار صفحات وب، از مفاهیم پایه تا عناصر معنایی",
-            eyebrow: "HTML LEARNING PATH",
-            icon: "5",
-            lessons: [
-
-                {
-                    id: "html-1",
-                    chapter: "فصل اول: آشنایی با HTML",
-                    title: "HTML چیست؟",
-                    category: "HTML BASICS",
-                    duration: "۵ دقیقه مطالعه",
-                    lead: "با زبان اصلی ساختار صفحات وب آشنا شو و اولین قدم را در توسعه وب بردار.",
-
-                    body: `
-                        <h2>HTML به چه معناست؟</h2>
-
-                        <p>
-                            HTML مخفف <strong>HyperText Markup Language</strong>
-                            است. این زبان برای تعریف ساختار و محتوای صفحات وب استفاده می‌شود.
-                        </p>
-
-                        <p>
-                            وقتی یک صفحه وب را باز می‌کنی، بخش‌هایی مثل عنوان،
-                            پاراگراف، تصویر، لینک و فرم را مشاهده می‌کنی.
-                            HTML مشخص می‌کند هرکدام از این عناصر چه هستند و
-                            چگونه در ساختار صفحه قرار می‌گیرند.
-                        </p>
-
-                        <h2>HTML چه کاری انجام می‌دهد؟</h2>
-
-                        <p>به زبان ساده، سه فناوری اصلی در توسعه فرانت‌اند نقش‌های متفاوتی دارند:</p>
-
-                        <ul>
-                            <li><strong>HTML:</strong> ساختار و محتوای صفحه را مشخص می‌کند.</li>
-                            <li><strong>CSS:</strong> ظاهر و چیدمان عناصر را طراحی می‌کند.</li>
-                            <li><strong>JavaScript:</strong> رفتار و تعاملات صفحه را ایجاد می‌کند.</li>
-                        </ul>
-
-                        <h2>اولین کد HTML</h2>
-
-                        <p>کد زیر یک عنوان و یک پاراگراف در صفحه ایجاد می‌کند:</p>
-
-                        <pre><code>&lt;h1&gt;سلام دنیا&lt;/h1&gt;
-&lt;p&gt;این اولین صفحه وب من است.&lt;/p&gt;</code></pre>
-
-                        <h2>تگ چیست؟</h2>
-
-                        <p>
-                            عناصر HTML معمولاً با تگ شروع و پایان تعریف می‌شوند.
-                            برای مثال، <code>&lt;p&gt;</code> شروع یک پاراگراف
-                            و <code>&lt;/p&gt;</code> پایان آن را مشخص می‌کند.
-                        </p>
-
-                        <p>
-                            بعضی عناصر مانند تصویر، تگ پایانی جداگانه ندارند.
-                        </p>
-                    `,
-
-                    takeaway: "HTML زبان برنامه‌نویسی نیست؛ بلکه یک زبان نشانه‌گذاری برای تعریف ساختار محتوای صفحات وب است.",
-
-                    exercise: "یک عنوان با متن «به وب‌سایت من خوش آمدید» و یک پاراگراف با متن دلخواه خودت بساز.",
-
-                    html: `<h1>سلام دنیا!</h1>
-<p>به اولین صفحه وب من خوش آمدید.</p>
-<h2>من در حال یادگیری HTML هستم.</h2>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 25px;
-    background: #f5f7ff;
-    color: #24304a;
-}
-
-h1 {
-    color: #4263eb;
-}
-
-p {
-    line-height: 2;
-}`,
-
-                    js: `console.log("Hello World!");`
-                },
-
-
-                {
-                    id: "html-2",
-                    chapter: "فصل اول: آشنایی با HTML",
-                    title: "ساختار یک سند HTML",
-                    category: "HTML STRUCTURE",
-                    duration: "۷ دقیقه مطالعه",
-                    lead: "یاد بگیر یک صفحه وب استاندارد از چه بخش‌هایی تشکیل شده است.",
-
-                    body: `
-                        <h2>ساختار استاندارد HTML</h2>
-
-                        <p>
-                            هر صفحه HTML معمولاً از یک ساختار مشخص پیروی می‌کند.
-                            این ساختار به مرورگر کمک می‌کند محتوای صفحه را درست تفسیر کند.
-                        </p>
-
-                        <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="fa" dir="rtl"&gt;
-
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
+const courses = {
+  html: {
+    id: "html",
+    title: "HTML",
+    fullTitle: "HTML؛ ساختار صفحات وب",
+    description: "یاد بگیر چطور ساختار صفحات وب را طراحی کنی و محتوای وب را با عناصر استاندارد سازمان‌دهی کنی.",
+    shortDescription: "از ساختار اولیه صفحه تا فرم‌ها، لینک‌ها و عناصر معنایی وب.",
+    icon: "5",
+    color: "#ff9878",
+    level: "مقدماتی",
+    duration: "۲ ساعت",
+    lessons: [
+      {
+        title: "HTML چیست و چگونه کار می‌کند؟",
+        category: "HTML FUNDAMENTALS",
+        duration: "۱۰ دقیقه",
+        lead: "برای ساخت وب‌سایت، ابتدا باید زبان ساختار صفحات وب را بشناسی. HTML نقطه شروع این مسیر است.",
+        body: `
+          <h2>HTML چیست؟</h2>
+          <p>HTML مخفف HyperText Markup Language است. از HTML برای تعریف ساختار و معنای محتوای یک صفحه وب استفاده می‌کنیم.</p>
+          <p>HTML یک زبان نشانه‌گذاری است، نه زبان برنامه‌نویسی. یعنی به مرورگر می‌گوید هر بخش از محتوا چه نقشی دارد؛ مثلاً عنوان، پاراگراف، تصویر یا لینک.</p>
+          <h2>یک سند HTML از چه بخش‌هایی تشکیل می‌شود؟</h2>
+          <pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa"&gt;
+  &lt;head&gt;
     &lt;title&gt;صفحه من&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
     &lt;h1&gt;سلام دنیا&lt;/h1&gt;
-    &lt;p&gt;اولین صفحه من&lt;/p&gt;
-&lt;/body&gt;
-
-&lt;/html&gt;</code></pre>
-
-                        <h2>بخش‌های اصلی</h2>
-
-                        <ul>
-                            <li><strong>DOCTYPE:</strong> نوع سند را به مرورگر معرفی می‌کند.</li>
-                            <li><strong>html:</strong> عنصر ریشه سند است.</li>
-                            <li><strong>head:</strong> اطلاعات و تنظیمات صفحه را نگهداری می‌کند.</li>
-                            <li><strong>meta:</strong> اطلاعاتی مانند کدگذاری کاراکترها را تعریف می‌کند.</li>
-                            <li><strong>title:</strong> عنوان صفحه در تب مرورگر است.</li>
-                            <li><strong>body:</strong> محتوای قابل مشاهده صفحه را در خود دارد.</li>
-                        </ul>
-
-                        <h2>تفاوت Head و Body</h2>
-
-                        <p>
-                            اطلاعات داخل <code>head</code> معمولاً مستقیماً
-                            به شکل محتوای صفحه نمایش داده نمی‌شوند.
-                            اما عناصر داخل <code>body</code> محتوای اصلی صفحه هستند.
-                        </p>
-
-                        <p>
-                            ویژگی <code>lang="fa"</code> زبان سند را فارسی
-                            و <code>dir="rtl"</code> جهت نوشتار را راست‌به‌چپ مشخص می‌کند.
-                        </p>
-                    `,
-
-                    takeaway: "هر سند HTML باید ساختار مشخصی داشته باشد. بخش Head برای اطلاعات سند و بخش Body برای محتوای صفحه است.",
-
-                    exercise: "یک سند HTML بساز که عنوان تب مرورگر آن «وب‌سایت من» باشد و در صفحه یک عنوان و دو پاراگراف نمایش دهد.",
-
-                    html: `<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>وب‌سایت من</title>
-</head>
-<body>
-    <h1>به وب‌سایت من خوش آمدید</h1>
-    <p>این اولین پاراگراف من است.</p>
-    <p>من در حال یادگیری HTML هستم.</p>
-</body>
-</html>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    padding: 25px;
-    line-height: 2;
-    background: #ffffff;
-    color: #26334d;
+    &lt;p&gt;اولین صفحه وب من&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</pre>
+          <h2>نقش تگ‌ها</h2>
+          <p>بیشتر عناصر HTML با یک تگ شروع و با یک تگ پایان مشخص می‌شوند. برای مثال <code>&lt;p&gt;</code> آغاز یک پاراگراف و <code>&lt;/p&gt;</code> پایان آن است.</p>
+          <ul>
+            <li><code>head</code>: اطلاعات و تنظیمات سند</li>
+            <li><code>body</code>: محتوای قابل مشاهده صفحه</li>
+            <li><code>h1</code>: عنوان اصلی</li>
+            <li><code>p</code>: پاراگراف</li>
+          </ul>
+        `,
+        takeaway: "HTML ساختار و معنای محتوا را مشخص می‌کند؛ ظاهر و رفتار صفحه مسئولیت اصلی HTML نیست.",
+        exercise: "در ویرایشگر، عنوان صفحه را به «دانشجوی فناوری» تغییر بده و یک پاراگراف درباره رشته تحصیلی خودت اضافه کن.",
+        code: {
+          html: `<main>
+  <h1>سلام، دنیای وب!</h1>
+  <p>من در حال یادگیری HTML هستم.</p>
+  <button>شروع یادگیری</button>
+</main>`,
+          css: `body {
+  font-family: Arial, sans-serif;
+  background: #f0f4ff;
+  padding: 30px;
 }
-
-h1 {
-    color: #4263eb;
-}`,
-
-                    js: `console.log("HTML Document Structure");`
-                },
-
-
-                {
-                    id: "html-3",
-                    chapter: "فصل دوم: عناصر HTML",
-                    title: "عنوان‌ها و پاراگراف‌ها",
-                    category: "HTML ELEMENTS",
-                    duration: "۶ دقیقه مطالعه",
-                    lead: "با عناصر متنی و نحوه سازمان‌دهی محتوای صفحات آشنا شو.",
-
-                    body: `
-                        <h2>عنوان‌ها در HTML</h2>
-
-                        <p>
-                            برای تعریف عنوان‌ها در HTML از تگ‌های
-                            <code>h1</code> تا <code>h6</code> استفاده می‌کنیم.
-                        </p>
-
-                        <pre><code>&lt;h1&gt;عنوان اصلی&lt;/h1&gt;
-&lt;h2&gt;عنوان بخش&lt;/h2&gt;
-&lt;h3&gt;عنوان زیرمجموعه&lt;/h3&gt;</code></pre>
-
-                        <p>
-                            این تگ‌ها فقط برای بزرگ کردن متن نیستند؛
-                            بلکه سلسله‌مراتب معنایی محتوا را هم مشخص می‌کنند.
-                        </p>
-
-                        <h2>پاراگراف</h2>
-
-                        <p>
-                            برای تعریف پاراگراف از تگ <code>p</code> استفاده می‌شود.
-                        </p>
-
-                        <pre><code>&lt;p&gt;
-این یک پاراگراف در صفحه وب است.
-&lt;/p&gt;</code></pre>
-
-                        <h2>اهمیت سلسله‌مراتب</h2>
-
-                        <ul>
-                            <li>عنوان اصلی صفحه را با h1 مشخص کن.</li>
-                            <li>برای بخش‌های اصلی از h2 استفاده کن.</li>
-                            <li>برای زیرمجموعه‌ها از h3 و سطوح پایین‌تر استفاده کن.</li>
-                        </ul>
-                    `,
-
-                    takeaway: "عنوان‌ها فقط ابزار ظاهری نیستند؛ آن‌ها ساختار و سلسله‌مراتب معنایی محتوای صفحه را مشخص می‌کنند.",
-
-                    exercise: "یک مقاله کوتاه با یک عنوان اصلی، دو عنوان فرعی و حداقل سه پاراگراف ایجاد کن.",
-
-                    html: `<h1>آشنایی با دنیای وب</h1>
-
-<h2>اینترنت چیست؟</h2>
-<p>اینترنت شبکه‌ای از شبکه‌های به‌هم‌پیوسته است.</p>
-
-<h2>وب چیست؟</h2>
-<p>وب یکی از خدماتی است که روی اینترنت ارائه می‌شود.</p>
-
-<h3>مرورگر چیست؟</h3>
-<p>مرورگر نرم‌افزاری برای مشاهده صفحات وب است.</p>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 25px;
-    line-height: 2;
+main {
+  max-width: 450px;
+  margin: 40px auto;
+  padding: 30px;
+  background: white;
+  border-radius: 16px;
+  text-align: center;
 }
-
-h1 {
-    color: #4263eb;
-}
-
-h2 {
-    color: #334155;
-    margin-top: 25px;
-}
-
-p {
-    color: #64748b;
-}`,
-
-                    js: `console.log("Headings and Paragraphs");`
-                }
-
-            ]
-        },
-
-
-        css: {
-            title: "آموزش CSS",
-            description: "یادگیری طراحی صفحات وب، رنگ‌ها، چیدمان و طراحی واکنش‌گرا",
-            eyebrow: "CSS LEARNING PATH",
-            icon: "3",
-            lessons: [
-
-                {
-                    id: "css-1",
-                    chapter: "فصل اول: آشنایی با CSS",
-                    title: "CSS چیست؟",
-                    category: "CSS BASICS",
-                    duration: "۵ دقیقه مطالعه",
-                    lead: "با زبان طراحی صفحات وب و نقش آن در تجربه کاربری آشنا شو.",
-
-                    body: `
-                        <h2>CSS به چه معناست؟</h2>
-
-                        <p>
-                            CSS مخفف <strong>Cascading Style Sheets</strong>
-                            است و برای تعیین ظاهر و چیدمان عناصر HTML استفاده می‌شود.
-                        </p>
-
-                        <p>
-                            HTML ساختار صفحه را مشخص می‌کند و CSS تعیین می‌کند
-                            این ساختار چگونه دیده شود.
-                        </p>
-
-                        <h2>یک مثال ساده</h2>
-
-                        <p>فرض کن در HTML یک عنوان داریم:</p>
-
-                        <pre><code>&lt;h1&gt;سلام دنیا&lt;/h1&gt;</code></pre>
-
-                        <p>با CSS می‌توانیم رنگ و اندازه آن را تغییر بدهیم:</p>
-
-                        <pre><code>h1 {
-    color: blue;
-    font-size: 32px;
-}</code></pre>
-
-                        <h2>روش‌های اتصال CSS</h2>
-
-                        <ul>
-                            <li><strong>Inline:</strong> نوشتن CSS داخل ویژگی style عنصر.</li>
-                            <li><strong>Internal:</strong> نوشتن CSS داخل تگ style در سند HTML.</li>
-                            <li><strong>External:</strong> استفاده از فایل مستقل CSS.</li>
-                        </ul>
-
-                        <p>
-                            استفاده از فایل External در پروژه‌های واقعی معمولاً
-                            باعث مدیریت و نگهداری بهتر کدها می‌شود.
-                        </p>
-                    `,
-
-                    takeaway: "CSS مسئول ظاهر، رنگ، اندازه، فاصله‌ها و چیدمان عناصر HTML است.",
-
-                    exercise: "رنگ عنوان را آبی کن، اندازه آن را افزایش بده و پس‌زمینه صفحه را تغییر بده.",
-
-                    html: `<h1>یادگیری CSS</h1>
-<p>با CSS می‌توانیم صفحات وب را زیباتر کنیم.</p>
-<button>شروع یادگیری</button>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 30px;
-    background: #f1f5ff;
-    text-align: center;
-}
-
-h1 {
-    color: #4263eb;
-    font-size: 32px;
-}
-
-p {
-    color: #64748b;
-    line-height: 2;
-}
-
+h1 { color: #3155bd; }
 button {
-    background: #4263eb;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    cursor: pointer;
+  background: #3155bd;
+  color: white;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
 }`,
+          js: `document.querySelector("button")
+  .addEventListener("click", function() {
+    alert("به دنیای وب خوش آمدی!");
+  });`
+        }
+      },
+      {
+        title: "تگ‌ها، عناصر و ویژگی‌ها",
+        category: "HTML ELEMENTS",
+        duration: "۱۲ دقیقه",
+        lead: "برای ساخت صفحات کاربردی باید تفاوت تگ، عنصر و ویژگی را بشناسی.",
+        body: `
+          <h2>تگ و عنصر چه تفاوتی دارند؟</h2>
+          <p>تگ، نشانه‌ای است که در کد می‌نویسیم. عنصر HTML معمولاً شامل تگ آغازین، محتوا و تگ پایانی است.</p>
+          <pre>&lt;a href="https://example.com"&gt;
+  مشاهده سایت
+&lt;/a&gt;</pre>
+          <h2>ویژگی‌ها (Attributes)</h2>
+          <p>ویژگی‌ها اطلاعات بیشتری درباره یک عنصر ارائه می‌کنند. در مثال بالا، <code>href</code> مقصد لینک را مشخص می‌کند.</p>
+          <h3>چند ویژگی پرکاربرد</h3>
+          <ul>
+            <li><code>id</code>: شناسه یکتای یک عنصر</li>
+            <li><code>class</code>: دسته‌بندی عناصر برای استایل‌دهی</li>
+            <li><code>href</code>: مقصد لینک</li>
+            <li><code>src</code>: مسیر منبع تصویر یا فایل</li>
+            <li><code>alt</code>: متن جایگزین تصویر</li>
+          </ul>
+          <h2>عناصر تو در تو</h2>
+          <p>می‌توان عناصر HTML را داخل یکدیگر قرار داد؛ اما باید ساختار تو در تو به‌درستی بسته شود.</p>
+        `,
+        takeaway: "ویژگی‌ها رفتار یا مشخصات عنصر را توصیف می‌کنند و در تگ آغازین قرار می‌گیرند.",
+        exercise: "یک لینک با مقصد دلخواه بساز و ویژگی title را به آن اضافه کن.",
+        code: {
+          html: `<section class="profile">
+  <h1>پروفایل دانشجو</h1>
+  <p>یادگیری فناوری، یک مسیر مستمر است.</p>
+  <a href="https://developer.mozilla.org"
+     title="مرجع آموزش وب">
+    مرجع آموزش وب
+  </a>
+</section>`,
+          css: `body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background: #eef2ff;
+}
+.profile {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+}
+a { color: #3155bd; }`,
+          js: `console.log("HTML Elements");`
+        }
+      },
+      {
+        title: "لینک‌ها، تصاویر و فهرست‌ها",
+        category: "HTML CONTENT",
+        duration: "۱۵ دقیقه",
+        lead: "در این درس با سه ابزار مهم برای نمایش محتوا در صفحات وب آشنا می‌شوی.",
+        body: `
+          <h2>لینک‌ها</h2>
+          <p>عنصر <code>a</code> برای ایجاد پیوند به صفحات دیگر یا بخش‌های مختلف یک صفحه استفاده می‌شود.</p>
+          <pre>&lt;a href="https://example.com"&gt;ورود به سایت&lt;/a&gt;</pre>
+          <h2>تصاویر</h2>
+          <p>برای نمایش تصویر از عنصر <code>img</code> استفاده می‌کنیم. این عنصر تگ پایانی ندارد.</p>
+          <pre>&lt;img src="photo.jpg" alt="توضیح تصویر"&gt;</pre>
+          <h2>فهرست‌ها</h2>
+          <p>فهرست نامرتب با <code>ul</code> و فهرست مرتب با <code>ol</code> ساخته می‌شود. هر مورد فهرست در عنصر <code>li</code> قرار می‌گیرد.</p>
+          <pre>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</pre>
+        `,
+        takeaway: "برای ساخت محتوای قابل فهم و دسترس‌پذیر، متن جایگزین تصویر و ساختار صحیح فهرست‌ها را فراموش نکن.",
+        exercise: "یک فهرست از سه مهارت مورد علاقه‌ات بساز و یک لینک به منبع آموزشی اضافه کن.",
+        code: {
+          html: `<h2>مهارت‌های مورد علاقه من</h2>
+<ul>
+  <li>طراحی وب</li>
+  <li>تحلیل داده</li>
+  <li>هوش مصنوعی</li>
+</ul>
+<a href="https://developer.mozilla.org">
+  مطالعه بیشتر
+</a>`,
+          css: `body {
+  font-family: Arial, sans-serif;
+  padding: 30px;
+  background: #f3f5fb;
+  color: #202b45;
+}
+li { margin: 12px 0; }
+a { color: #3155bd; }`,
+          js: `console.log("Content elements loaded");`
+        }
+      }
+    ]
+  },
 
-                    js: `console.log("Welcome to CSS!");`
-                },
-
-
-                {
-                    id: "css-2",
-                    chapter: "فصل اول: آشنایی با CSS",
-                    title: "Selector و انتخابگرها",
-                    category: "CSS SELECTORS",
-                    duration: "۷ دقیقه مطالعه",
-                    lead: "یاد بگیر چطور عناصر HTML را برای اعمال استایل انتخاب کنی.",
-
-                    body: `
-                        <h2>Selector چیست؟</h2>
-
-                        <p>
-                            انتخابگرها مشخص می‌کنند کدام عناصر HTML باید
-                            استایل‌های تعریف‌شده در CSS را دریافت کنند.
-                        </p>
-
-                        <h2>انتخابگر عنصر</h2>
-
-                        <pre><code>p {
-    color: blue;
-}</code></pre>
-
-                        <p>این قانون تمام عناصر پاراگراف را انتخاب می‌کند.</p>
-
-                        <h2>انتخابگر Class</h2>
-
-                        <p>
-                            برای انتخاب عناصر دارای یک کلاس مشخص،
-                            از نقطه قبل از نام کلاس استفاده می‌کنیم.
-                        </p>
-
-                        <pre><code>.card {
-    background: white;
-    padding: 20px;
-}</code></pre>
-
-                        <h2>انتخابگر ID</h2>
-
-                        <p>
-                            برای انتخاب یک عنصر با شناسه مشخص از علامت #
-                            استفاده می‌کنیم.
-                        </p>
-
-                        <pre><code>#main-title {
-    color: red;
-}</code></pre>
-
-                        <h2>مقایسه انتخابگرها</h2>
-
-                        <ul>
-                            <li>Element: انتخاب بر اساس نام تگ</li>
-                            <li>Class: انتخاب بر اساس کلاس</li>
-                            <li>ID: انتخاب بر اساس شناسه</li>
-                        </ul>
-                    `,
-
-                    takeaway: "از Class برای گروه‌بندی و استایل‌دهی عناصر مشابه و از ID برای شناسایی یک عنصر مشخص استفاده می‌شود.",
-
-                    exercise: "سه کارت ایجاد کن و با استفاده از Class رنگ و فاصله آن‌ها را تغییر بده.",
-
-                    html: `<h1 id="main-title">انتخابگرهای CSS</h1>
-
-<div class="card">
-    <h2>کارت اول</h2>
-    <p>این یک نمونه است.</p>
-</div>
-
-<div class="card">
-    <h2>کارت دوم</h2>
-    <p>این هم یک نمونه دیگر است.</p>
+  css: {
+    id: "css",
+    title: "CSS",
+    fullTitle: "CSS؛ طراحی و زیباسازی وب",
+    description: "با اصول طراحی رابط کاربری، رنگ‌ها، چیدمان، فاصله‌گذاری و طراحی واکنش‌گرا آشنا شو.",
+    shortDescription: "از انتخاب رنگ و فونت تا طراحی صفحات واکنش‌گرا.",
+    icon: "✳",
+    color: "#7f9cff",
+    level: "مقدماتی",
+    duration: "۲ ساعت",
+    lessons: [
+      {
+        title: "CSS چیست و چگونه کار می‌کند؟",
+        category: "CSS FUNDAMENTALS",
+        duration: "۱۰ دقیقه",
+        lead: "HTML ساختار صفحه را می‌سازد و CSS ظاهر آن را شکل می‌دهد.",
+        body: `
+          <h2>CSS چیست؟</h2>
+          <p>CSS مخفف Cascading Style Sheets است. با استفاده از آن می‌توانیم رنگ، اندازه، فونت، فاصله و چیدمان عناصر HTML را کنترل کنیم.</p>
+          <h2>ساختار یک قانون CSS</h2>
+          <pre>h1 {
+  color: blue;
+  font-size: 32px;
+}</pre>
+          <p>در این مثال، <code>h1</code> انتخابگر است و دو ویژگی رنگ و اندازه فونت برای آن تعریف شده‌اند.</p>
+          <h2>سه روش استفاده از CSS</h2>
+          <ul>
+            <li>Inline: داخل ویژگی style عنصر</li>
+            <li>Internal: داخل تگ style در سند HTML</li>
+            <li>External: در فایل جداگانه CSS</li>
+          </ul>
+          <p>در پروژه‌های واقعی، معمولاً فایل خارجی به دلیل نظم و نگهداری بهتر انتخاب مناسبی است.</p>
+        `,
+        takeaway: "CSS ظاهر و چیدمان عناصر HTML را کنترل می‌کند و بهتر است در فایل جداگانه نگهداری شود.",
+        exercise: "رنگ عنوان را تغییر بده و اندازه فونت آن را به ۳۶ پیکسل برسان.",
+        code: {
+          html: `<div class="card">
+  <span class="tag">MY FIRST DESIGN</span>
+  <h1>طراحی با CSS</h1>
+  <p>ظاهر وب را خودت بساز.</p>
 </div>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 20px;
-    background: #f8fafc;
+          css: `body {
+  background: #111827;
+  font-family: Arial, sans-serif;
+  padding: 30px;
 }
-
-#main-title {
-    color: #4263eb;
-}
-
 .card {
-    background: white;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 12px;
-    border: 1px solid #e2e8f0;
+  background: #202d46;
+  padding: 30px;
+  border-radius: 18px;
+  color: white;
+  max-width: 350px;
+  margin: 30px auto;
 }
-
-.card h2 {
-    font-size: 16px;
-    color: #334155;
-}`,
-
-                    js: `console.log("CSS Selectors");`
-                },
-
-
-                {
-                    id: "css-3",
-                    chapter: "فصل دوم: مدل جعبه‌ای",
-                    title: "Box Model چیست؟",
-                    category: "CSS BOX MODEL",
-                    duration: "۸ دقیقه مطالعه",
-                    lead: "درک کن هر عنصر HTML چگونه فضا اشغال می‌کند و ابعاد آن چگونه محاسبه می‌شود.",
-
-                    body: `
-                        <h2>مدل جعبه‌ای چیست؟</h2>
-
-                        <p>
-                            در CSS هر عنصر به‌صورت یک جعبه در نظر گرفته می‌شود.
-                            این جعبه از چهار بخش اصلی تشکیل شده است.
-                        </p>
-
-                        <ul>
-                            <li><strong>Content:</strong> محتوای اصلی عنصر</li>
-                            <li><strong>Padding:</strong> فاصله داخلی محتوا تا مرز عنصر</li>
-                            <li><strong>Border:</strong> حاشیه یا مرز عنصر</li>
-                            <li><strong>Margin:</strong> فاصله خارجی عنصر با عناصر دیگر</li>
-                        </ul>
-
-                        <h2>مثال</h2>
-
-                        <pre><code>.box {
-    width: 200px;
-    padding: 20px;
-    border: 5px solid blue;
-    margin: 15px;
-}</code></pre>
-
-                        <p>
-                            با تنظیم <code>box-sizing: border-box</code>
-                            می‌توانیم عرض و ارتفاع تعریف‌شده را شامل
-                            Padding و Border در نظر بگیریم.
-                        </p>
-
-                        <pre><code>* {
-    box-sizing: border-box;
-}</code></pre>
-                    `,
-
-                    takeaway: "Padding فضای داخلی، Border مرز عنصر و Margin فاصله بیرونی آن است.",
-
-                    exercise: "یک کارت بساز و مقدار Padding، Margin و Border آن را تغییر بده. تفاوت‌ها را در خروجی مشاهده کن.",
-
-                    html: `<div class="box">
-    <h2>Box Model</h2>
-    <p>این یک جعبه آزمایشی است.</p>
+.tag { color: #70d7e9; font-size: 11px; }
+h1 { font-size: 32px; }
+p { color: #aab8d1; }`,
+          js: `console.log("Welcome to CSS");`
+        }
+      },
+      {
+        title: "رنگ، فونت و مدل جعبه‌ای",
+        category: "CSS STYLING",
+        duration: "۱۵ دقیقه",
+        lead: "برای کنترل دقیق ظاهر، باید مدل جعبه‌ای و ویژگی‌های بصری را بشناسی.",
+        body: `
+          <h2>مدل جعبه‌ای (Box Model)</h2>
+          <p>هر عنصر در CSS مانند یک جعبه در نظر گرفته می‌شود. این جعبه از محتوا، فاصله داخلی، کادر و فاصله خارجی تشکیل شده است.</p>
+          <ul>
+            <li><code>content</code>: محتوای عنصر</li>
+            <li><code>padding</code>: فاصله داخلی</li>
+            <li><code>border</code>: کادر عنصر</li>
+            <li><code>margin</code>: فاصله خارجی</li>
+          </ul>
+          <h2>رنگ و فونت</h2>
+          <p>برای رنگ می‌توان از نام رنگ، HEX، RGB و HSL استفاده کرد. برای فونت نیز ویژگی <code>font-family</code> به کار می‌رود.</p>
+          <h2>نمونه</h2>
+          <pre>.box {
+  background: #eef2ff;
+  padding: 20px;
+  border: 1px solid #ccd5ef;
+  margin: 15px;
+  border-radius: 12px;
+}</pre>
+        `,
+        takeaway: "مدل Box Model برای فهم اندازه واقعی عناصر و فاصله میان آن‌ها ضروری است.",
+        exercise: "padding و margin کارت را تغییر بده و تفاوت آن‌ها را در خروجی مشاهده کن.",
+        code: {
+          html: `<div class="box">
+  <h2>Box Model</h2>
+  <p>هر عنصر یک جعبه است.</p>
 </div>`,
-
-                    css: `* {
-    box-sizing: border-box;
+          css: `body {
+  background: #e9edfa;
+  font-family: Arial, sans-serif;
 }
-
-body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 20px;
-    background: #f1f5ff;
-}
-
 .box {
-    background: white;
-    width: 100%;
-    padding: 25px;
-    border: 4px solid #4263eb;
-    margin: 15px 0;
-    border-radius: 12px;
+  background: white;
+  color: #202b45;
+  padding: 35px;
+  border: 3px solid #7791ef;
+  margin: 35px;
+  border-radius: 16px;
 }
-
-h2 {
-    color: #4263eb;
+h2 { color: #3155bd; }`,
+          js: `console.log("Box Model");`
+        }
+      },
+      {
+        title: "Flexbox و طراحی واکنش‌گرا",
+        category: "CSS LAYOUT",
+        duration: "۲۰ دقیقه",
+        lead: "چیدمان مناسب، یکی از مهم‌ترین مهارت‌های طراحی رابط کاربری است.",
+        body: `
+          <h2>Flexbox چیست؟</h2>
+          <p>Flexbox یک روش چیدمان در CSS است که برای مرتب‌سازی عناصر در یک محور اصلی و محور متقاطع کاربرد دارد.</p>
+          <pre>.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}</pre>
+          <h2>چند ویژگی پرکاربرد</h2>
+          <ul>
+            <li><code>justify-content</code>: توزیع عناصر در محور اصلی</li>
+            <li><code>align-items</code>: تراز عناصر در محور متقاطع</li>
+            <li><code>gap</code>: فاصله میان عناصر</li>
+            <li><code>flex-wrap</code>: امکان رفتن عناصر به سطر بعد</li>
+          </ul>
+          <h2>طراحی واکنش‌گرا</h2>
+          <p>با Media Query می‌توانیم ظاهر صفحه را متناسب با اندازه نمایشگر تغییر دهیم.</p>
+          <pre>@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}</pre>
+        `,
+        takeaway: "Flexbox برای چیدمان‌های یک‌بعدی بسیار کاربردی است و Media Query به سازگاری صفحه با نمایشگرهای مختلف کمک می‌کند.",
+        exercise: "سه کارت بساز. آن‌ها را در دسکتاپ کنار هم و در موبایل زیر هم نمایش بده.",
+        code: {
+          html: `<div class="container">
+  <div class="box">HTML</div>
+  <div class="box">CSS</div>
+  <div class="box">JS</div>
+</div>`,
+          css: `body {
+  font-family: Arial, sans-serif;
+  background: #111827;
+  padding: 25px;
 }
-
-p {
-    color: #64748b;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.box {
+  background: #304879;
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+  flex: 1;
+  min-width: 90px;
+  text-align: center;
+}
+@media(max-width: 500px) {
+  .container { flex-direction: column; }
+  .box { width: 100%; }
 }`,
+          js: `console.log("Responsive layout");`
+        }
+      }
+    ]
+  },
 
-                    js: `console.log("CSS Box Model");`
-                }
-
-            ]
-        },
-
-
-        javascript: {
-            title: "آموزش JavaScript",
-            description: "یادگیری منطق برنامه‌نویسی، متغیرها، توابع و تعامل با صفحات وب",
-            eyebrow: "JAVASCRIPT LEARNING PATH",
-            icon: "JS",
-            lessons: [
-
-                {
-                    id: "js-1",
-                    chapter: "فصل اول: آشنایی با JavaScript",
-                    title: "JavaScript چیست؟",
-                    category: "JAVASCRIPT BASICS",
-                    duration: "۶ دقیقه مطالعه",
-                    lead: "با زبان برنامه‌نویسی اصلی تعاملات وب آشنا شو.",
-
-                    body: `
-                        <h2>JavaScript چیست؟</h2>
-
-                        <p>
-                            JavaScript یک زبان برنامه‌نویسی است که به صفحات وب
-                            امکان می‌دهد رفتارهای پویا و تعاملی داشته باشند.
-                        </p>
-
-                        <p>
-                            برای مثال، باز شدن منو، بررسی فرم‌ها،
-                            تغییر محتوای صفحه و تعامل با کاربر می‌تواند
-                            با JavaScript پیاده‌سازی شود.
-                        </p>
-
-                        <h2>اولین دستور JavaScript</h2>
-
-                        <pre><code>console.log("Hello World");</code></pre>
-
-                        <p>
-                            این دستور یک پیام را در Console مرورگر نمایش می‌دهد.
-                        </p>
-
-                        <h2>JavaScript چه کاربردهایی دارد؟</h2>
-
-                        <ul>
-                            <li>تعامل با عناصر صفحه</li>
-                            <li>اعتبارسنجی فرم‌ها</li>
-                            <li>ساخت منوها و اسلایدرها</li>
-                            <li>ارتباط با APIها</li>
-                            <li>ساخت برنامه‌های تحت وب</li>
-                        </ul>
-
-                        <h2>یک مثال تعاملی</h2>
-
-                        <p>
-                            در مثال زیر با کلیک روی دکمه، متن صفحه تغییر می‌کند.
-                        </p>
-                    `,
-
-                    takeaway: "JavaScript به صفحات وب قابلیت اجرا و تعامل می‌دهد و می‌تواند محتوای HTML را در زمان اجرا تغییر دهد.",
-
-                    exercise: "یک دکمه بساز که با کلیک روی آن متن یک پاراگراف تغییر کند.",
-
-                    html: `<h2 id="message">سلام! به دنیای JavaScript خوش آمدی.</h2>
-<button id="changeBtn">تغییر متن</button>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    text-align: center;
-    padding: 30px;
-    background: #fff9e5;
+  javascript: {
+    id: "javascript",
+    title: "JavaScript",
+    fullTitle: "JavaScript؛ منطق و تعامل در وب",
+    description: "با متغیرها، توابع، شرط‌ها، رویدادها و تعامل با عناصر صفحه آشنا شو.",
+    shortDescription: "از اولین متغیرها تا ساخت تعامل‌های واقعی در صفحات وب.",
+    icon: "JS",
+    color: "#f2d36e",
+    level: "مقدماتی",
+    duration: "۳ ساعت",
+    lessons: [
+      {
+        title: "JavaScript چیست؟",
+        category: "JS FUNDAMENTALS",
+        duration: "۱۲ دقیقه",
+        lead: "JavaScript به صفحات وب امکان می‌دهد به رویدادها واکنش نشان دهند و رفتارهای پویا داشته باشند.",
+        body: `
+          <h2>JavaScript چه کاری انجام می‌دهد؟</h2>
+          <p>HTML ساختار را تعریف می‌کند، CSS ظاهر را می‌سازد و JavaScript رفتار و تعامل را مدیریت می‌کند.</p>
+          <h2>اولین دستور</h2>
+          <pre>console.log("Hello World");</pre>
+          <p>دستور <code>console.log()</code> برای نمایش اطلاعات در کنسول مرورگر استفاده می‌شود.</p>
+          <h2>اجرای JavaScript در صفحه</h2>
+          <p>می‌توان کد را در فایل جداگانه با پسوند <code>.js</code> نوشت و با تگ script به HTML متصل کرد.</p>
+        `,
+        takeaway: "JavaScript رفتار و منطق تعاملی صفحات وب را کنترل می‌کند.",
+        exercise: "در ویرایشگر، متن داخل console.log را تغییر بده و نتیجه را در کنسول مشاهده کن.",
+        code: {
+          html: `<div class="box">
+  <h2>اولین کد من</h2>
+  <p id="message">هنوز دکمه را نزده‌ای.</p>
+  <button id="btn">کلیک کن</button>
+</div>`,
+          css: `body {
+  font-family: Arial, sans-serif;
+  background: #eef2ff;
+  padding: 30px;
 }
-
-h2 {
-    color: #7b6500;
-    font-size: 18px;
-    line-height: 2;
+.box {
+  background: white;
+  max-width: 350px;
+  margin: auto;
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
 }
-
 button {
-    background: #e5b91b;
-    color: #302600;
-    border: none;
-    border-radius: 10px;
-    padding: 12px 22px;
-    cursor: pointer;
-    font-weight: bold;
+  background: #3155bd;
+  color: white;
+  border: 0;
+  padding: 12px 20px;
+  border-radius: 8px;
 }`,
-
-                    js: `const button = document.getElementById("changeBtn");
-
-button.addEventListener("click", function() {
+          js: `document.getElementById("btn")
+  .addEventListener("click", function() {
     document.getElementById("message").textContent =
-        "آفرین! اولین تعامل JavaScript را ساختی.";
-});`
-                },
+      "آفرین! اولین تعامل را ساختی.";
+  });`
+        }
+      },
+      {
+        title: "متغیرها و انواع داده",
+        category: "JS VARIABLES",
+        duration: "۱۵ دقیقه",
+        lead: "متغیرها به ما اجازه می‌دهند داده‌ها را در برنامه ذخیره و مدیریت کنیم.",
+        body: `
+          <h2>متغیر چیست؟</h2>
+          <p>متغیر یک نام برای دسترسی به مقداری از داده است. در JavaScript معمولاً از <code>let</code> و <code>const</code> استفاده می‌کنیم.</p>
+          <pre>let age = 25;
+const name = "Sara";
+let isStudent = true;</pre>
+          <h2>تفاوت let و const</h2>
+          <p>با <code>let</code> می‌توان مقدار متغیر را دوباره تغییر داد؛ اما متغیری که با <code>const</code> تعریف شده، دوباره مقداردهی نمی‌شود.</p>
+          <h2>انواع داده رایج</h2>
+          <ul>
+            <li>String: متن</li>
+            <li>Number: عدد</li>
+            <li>Boolean: درست یا نادرست</li>
+            <li>Array: مجموعه‌ای از مقادیر</li>
+            <li>Object: مجموعه‌ای از ویژگی‌ها و مقادیر</li>
+          </ul>
+        `,
+        takeaway: "از const برای مقادیری که قرار نیست دوباره مقداردهی شوند و از let برای متغیرهای قابل تغییر استفاده کن.",
+        exercise: "نام، سن و رشته تحصیلی خودت را در سه متغیر ذخیره کن و آن‌ها را نمایش بده.",
+        code: {
+          html: `<div class="box">
+  <h2>اطلاعات دانشجو</h2>
+  <p id="result"></p>
+</div>`,
+          css: `body { font-family: Arial; background: #f1f3fa; padding: 25px; }
+.box { background: white; padding: 25px; border-radius: 15px; max-width: 350px; margin: auto; }`,
+          js: `const student = {
+  name: "Sara",
+  age: 22,
+  field: "Information Science"
+};
 
-
-                {
-                    id: "js-2",
-                    chapter: "فصل اول: آشنایی با JavaScript",
-                    title: "متغیرها و انواع داده",
-                    category: "VARIABLES & DATA TYPES",
-                    duration: "۸ دقیقه مطالعه",
-                    lead: "یاد بگیر چطور اطلاعات را در برنامه ذخیره و مدیریت کنی.",
-
-                    body: `
-                        <h2>متغیر چیست؟</h2>
-
-                        <p>
-                            متغیر فضایی نام‌گذاری‌شده برای نگهداری داده‌ها
-                            در برنامه است.
-                        </p>
-
-                        <p>
-                            در JavaScript برای تعریف متغیر معمولاً
-                            از <code>let</code> و <code>const</code> استفاده می‌کنیم.
-                        </p>
-
-                        <pre><code>let name = "Ali";
-let age = 25;
-
-const country = "Iran";</code></pre>
-
-                        <h2>تفاوت let و const</h2>
-
-                        <ul>
-                            <li><strong>let:</strong> مقدار متغیر را می‌توان دوباره تغییر داد.</li>
-                            <li><strong>const:</strong> نمی‌توان متغیر را دوباره مقداردهی کرد.</li>
-                        </ul>
-
-                        <h2>انواع داده‌ها</h2>
-
-                        <ul>
-                            <li><strong>String:</strong> متن</li>
-                            <li><strong>Number:</strong> عدد</li>
-                            <li><strong>Boolean:</strong> درست یا نادرست</li>
-                            <li><strong>Undefined:</strong> مقدار تعریف‌نشده</li>
-                            <li><strong>Null:</strong> نبود عمدی مقدار</li>
-                            <li><strong>Object:</strong> مجموعه‌ای از ویژگی‌ها و مقادیر</li>
-                        </ul>
-
-                        <h2>مثال</h2>
-
-                        <pre><code>let score = 18;
-let student = "Sara";
-let isActive = true;
-
-console.log(score);
-console.log(student);
-console.log(isActive);</code></pre>
-                    `,
-
-                    takeaway: "از let برای متغیرهای قابل تغییر و از const برای متغیرهایی استفاده کن که قرار نیست دوباره مقداردهی شوند.",
-
-                    exercise: "نام، سن و وضعیت دانشجویی خودت را در سه متغیر ذخیره کن و آن‌ها را در Console نمایش بده.",
-
-                    html: `<h2>آزمایش متغیرها</h2>
-<p>دکمه را بزن تا اطلاعات را مشاهده کنی.</p>
-<button id="showInfo">نمایش اطلاعات</button>
-<p id="result"></p>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    padding: 25px;
-    background: #f8fafc;
-    text-align: center;
-}
-
-button {
-    padding: 12px 20px;
-    background: #4263eb;
-    color: white;
-    border: none;
-    border-radius: 9px;
-    cursor: pointer;
-}
-
-#result {
-    line-height: 2;
-    color: #334155;
-}`,
-
-                    js: `let name = "Ali";
-let age = 25;
-const isStudent = true;
-
-document.getElementById("showInfo")
-.addEventListener("click", function() {
-
-    document.getElementById("result").textContent =
-        "نام: " + name +
-        " | سن: " + age +
-        " | دانشجو: " + isStudent;
-
-});`
-                },
-
-
-                {
-                    id: "js-3",
-                    chapter: "فصل دوم: منطق برنامه‌نویسی",
-                    title: "شرط‌ها و تصمیم‌گیری",
-                    category: "CONDITIONALS",
-                    duration: "۷ دقیقه مطالعه",
-                    lead: "با استفاده از شرط‌ها، به برنامه یاد بده در موقعیت‌های مختلف تصمیم بگیرد.",
-
-                    body: `
-                        <h2>شرط چیست؟</h2>
-
-                        <p>
-                            در برنامه‌نویسی همیشه لازم است بر اساس شرایط
-                            مختلف رفتارهای متفاوتی داشته باشیم.
-                            برای این کار از ساختارهای شرطی استفاده می‌کنیم.
-                        </p>
-
-                        <h2>ساختار if</h2>
-
-                        <pre><code>let age = 20;
-
-if (age >= 18) {
-    console.log("بزرگسال");
-}</code></pre>
-
-                        <h2>ساختار if و else</h2>
-
-                        <pre><code>let score = 15;
+document.getElementById("result").textContent =
+  student.name + " / " + student.age + " / " + student.field;`
+        }
+      },
+      {
+        title: "شرط‌ها، توابع و رویدادها",
+        category: "JS LOGIC",
+        duration: "۲۰ دقیقه",
+        lead: "با شرط‌ها و توابع می‌توانی تصمیم‌گیری و رفتارهای قابل استفاده مجدد بسازی.",
+        body: `
+          <h2>ساختار شرطی</h2>
+          <p>با دستور <code>if</code> می‌توانیم اجرای برنامه را به برقرار بودن یک شرط وابسته کنیم.</p>
+          <pre>let score = 18;
 
 if (score >= 10) {
-    console.log("قبول");
+  console.log("قبول");
 } else {
-    console.log("مردود");
-}</code></pre>
-
-                        <h2>عملگرهای مقایسه</h2>
-
-                        <ul>
-                            <li><code>===</code> برابر از نظر مقدار و نوع</li>
-                            <li><code>!==</code> نابرابر از نظر مقدار یا نوع</li>
-                            <li><code>&gt;</code> بزرگ‌تر</li>
-                            <li><code>&lt;</code> کوچک‌تر</li>
-                            <li><code>&gt;=</code> بزرگ‌تر یا مساوی</li>
-                            <li><code>&lt;=</code> کوچک‌تر یا مساوی</li>
-                        </ul>
-
-                        <p>
-                            در JavaScript معمولاً استفاده از
-                            <code>===</code> به‌جای <code>==</code>
-                            انتخاب دقیق‌تری است؛ زیرا نوع داده را هم مقایسه می‌کند.
-                        </p>
-                    `,
-
-                    takeaway: "ساختارهای شرطی به برنامه اجازه می‌دهند بر اساس درست یا نادرست بودن یک شرط، مسیر اجرای متفاوتی انتخاب کند.",
-
-                    exercise: "برنامه‌ای بساز که نمره کاربر را دریافت کند و مشخص کند قبول شده یا مردود است.",
-
-                    html: `<h2>بررسی نمره دانشجو</h2>
-
-<input id="score" type="number" placeholder="نمره از ۲۰">
-
-<button id="checkScore">بررسی نتیجه</button>
-
-<p id="result"></p>`,
-
-                    css: `body {
-    font-family: Tahoma, sans-serif;
-    direction: rtl;
-    text-align: center;
-    padding: 25px;
-    background: #f8fafc;
+  console.log("نیاز به تلاش بیشتر");
+}</pre>
+          <h2>تابع چیست؟</h2>
+          <p>تابع مجموعه‌ای از دستورهاست که می‌توان آن را در بخش‌های مختلف برنامه فراخوانی کرد.</p>
+          <pre>function greet(name) {
+  return "سلام " + name;
 }
 
-input {
-    display: block;
-    margin: 15px auto;
-    padding: 12px;
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    max-width: 220px;
+console.log(greet("علی"));</pre>
+          <h2>رویدادها</h2>
+          <p>رویدادهایی مانند کلیک، تایپ یا ارسال فرم می‌توانند باعث اجرای کد JavaScript شوند.</p>
+          <pre>button.addEventListener("click", function() {
+  alert("کلیک شد!");
+});</pre>
+        `,
+        takeaway: "شرط‌ها برای تصمیم‌گیری، توابع برای سازمان‌دهی کد و رویدادها برای ایجاد تعامل استفاده می‌شوند.",
+        exercise: "یک دکمه بساز که با هر بار کلیک، عدد نمایش‌داده‌شده در صفحه را یک واحد افزایش دهد.",
+        code: {
+          html: `<div class="counter">
+  <h2>شمارنده کلیک</h2>
+  <strong id="count">0</strong>
+  <button id="increase">افزایش عدد</button>
+</div>`,
+          css: `body {
+  font-family: Arial;
+  background: #111827;
+  padding: 30px;
 }
-
+.counter {
+  background: #202d46;
+  color: white;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 300px;
+  margin: auto;
+}
+strong {
+  display: block;
+  font-size: 48px;
+  color: #f2d36e;
+  margin: 15px;
+}
 button {
-    padding: 11px 20px;
-    background: #4263eb;
-    color: white;
-    border: none;
-    border-radius: 9px;
-    cursor: pointer;
+  border: 0;
+  background: #6485ff;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}`,
+          js: `let count = 0;
+
+function increaseCount() {
+  count++;
+  document.getElementById("count").textContent = count;
 }
 
-#result {
-    font-weight: bold;
-    margin-top: 20px;
-}`,
-
-                    js: `document.getElementById("checkScore")
-.addEventListener("click", function() {
-
-    const score = Number(
-        document.getElementById("score").value
-    );
-
-    const result = document.getElementById("result");
-
-    if (score < 0 || score > 20 || document.getElementById("score").value === "") {
-        result.textContent = "لطفاً نمره معتبر وارد کن.";
-    } else if (score >= 10) {
-        result.textContent = "تبریک! قبول شدی.";
-        result.style.color = "green";
-    } else {
-        result.textContent = "این بار مردود شدی. دوباره تلاش کن.";
-        result.style.color = "red";
-    }
-
-});`
-                }
-
-            ]
+document.getElementById("increase")
+  .addEventListener("click", increaseCount);`
         }
-
-    };
-
-
-    /* =====================================
-       2. APPLICATION STATE
-    ===================================== */
-
-    let currentCourse = null;
-    let currentLessonIndex = 0;
-    let currentEditor = "html";
-
-    let debounceTimer = null;
-
-    const STORAGE_KEY = "weblab-progress-v1";
-
-    let completedLessons = [];
-
-    try {
-        const saved = JSON.parse(
-            localStorage.getItem(STORAGE_KEY) || "[]"
-        );
-
-        if (Array.isArray(saved)) {
-            completedLessons = saved.filter(
-                item => typeof item === "string"
-            );
-        }
-    } catch (error) {
-        completedLessons = [];
-    }
-
-
-    /* =====================================
-       3. DOM REFERENCES
-    ===================================== */
-
-    const $ = id => document.getElementById(id);
-
-    const pages = {
-        home: $("homePage"),
-        course: $("coursePage"),
-        lesson: $("lessonPage"),
-        about: $("aboutPage")
-    };
-
-    const courseGrid = $("courseGrid");
-    const lessonList = $("lessonList");
-
-    const lessonTitle = $("lessonTitle");
-    const lessonLead = $("lessonLead");
-    const lessonBody = $("lessonBody");
-
-    const htmlEditor = $("htmlEditor");
-    const cssEditor = $("cssEditor");
-    const jsEditor = $("jsEditor");
-
-    const previewFrame = $("previewFrame");
-
-
-    /* =====================================
-       4. HELPERS
-    ===================================== */
-
-    function toPersianNumber(value) {
-        return String(value).replace(/\d/g, digit =>
-            "۰۱۲۳۴۵۶۷۸۹"[digit]
-        );
-    }
-
-    function getCurrentCourse() {
-        return courses[currentCourse];
-    }
-
-    function getCurrentLesson() {
-        const course = getCurrentCourse();
-
-        return course
-            ? course.lessons[currentLessonIndex]
-            : null;
-    }
-
-    function saveProgress() {
-        try {
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(completedLessons)
-            );
-        } catch (error) {
-            console.warn("Progress could not be saved.", error);
-        }
-    }
-
-    function markLessonCompleted(lessonId) {
-        if (!completedLessons.includes(lessonId)) {
-            completedLessons.push(lessonId);
-            saveProgress();
-        }
-
-        updateProgress();
-        renderLessonList();
-    }
-
-    function escapeHTML(value) {
-        return String(value).replace(/[&<>"']/g, char => ({
-            "&": "&amp;",
-            "<": "&lt;",
-            ">": "&gt;",
-            '"': "&quot;",
-            "'": "&#039;"
-        })[char]);
-    }
-
-
-    /* =====================================
-       5. PAGE NAVIGATION
-    ===================================== */
-
-    function showPage(pageName) {
-
-        Object.values(pages).forEach(page => {
-            page.classList.remove("active");
-        });
-
-        if (!pages[pageName]) return;
-
-        pages[pageName].classList.add("active");
-
-        document.querySelectorAll(".nav-link").forEach(link => {
-            link.classList.toggle(
-                "active",
-                link.dataset.page === pageName
-            );
-        });
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-        const nav = document.querySelector(".main-nav");
-
-        if (nav) nav.classList.remove("open");
-    }
-
-
-    /* =====================================
-       6. HOME PAGE
-    ===================================== */
-
-    function updateCourseCounts() {
-
-        document.querySelectorAll("[data-count]").forEach(element => {
-
-            const courseId = element.dataset.count;
-            const course = courses[courseId];
-
-            if (course) {
-                element.textContent =
-                    `${toPersianNumber(course.lessons.length)} درس آموزشی`;
-            }
-
-        });
-
-    }
-
-
-    /* =====================================
-       7. SEARCH
-    ===================================== */
-
-    const searchInput = $("searchInput");
-
-    function searchCourses() {
-
-        const query = searchInput.value.trim().toLowerCase();
-
-        let visibleCount = 0;
-
-        document.querySelectorAll(".course-card").forEach(card => {
-
-            const courseId = card.dataset.course;
-            const course = courses[courseId];
-
-            const searchable = [
-                course.title,
-                course.description,
-                ...course.lessons.map(lesson =>
-                    lesson.title + " " +
-                    lesson.category + " " +
-                    lesson.chapter
-                )
-            ].join(" ").toLowerCase();
-
-            const matches = searchable.includes(query);
-
-            card.classList.toggle("hidden", !matches);
-
-            if (matches) visibleCount++;
-
-        });
-
-        let emptyMessage = document.querySelector(".search-empty");
-
-        if (visibleCount === 0 && query !== "") {
-
-            if (!emptyMessage) {
-
-                emptyMessage = document.createElement("div");
-
-                emptyMessage.className = "search-empty";
-
-                emptyMessage.innerHTML = `
-                    <strong>نتیجه‌ای پیدا نشد!</strong>
-                    عبارت دیگری را امتحان کن.
-                `;
-
-                courseGrid.appendChild(emptyMessage);
-            }
-
-        } else if (emptyMessage) {
-            emptyMessage.remove();
-        }
-
-    }
-
-    searchInput.addEventListener("input", searchCourses);
-
-
-    /* =====================================
-       8. OPEN COURSE
-    ===================================== */
-
-    function openCourse(courseId) {
-
-        if (!courses[courseId]) return;
-
-        currentCourse = courseId;
-        currentLessonIndex = 0;
-
-        const course = getCurrentCourse();
-
-        $("courseTitle").textContent = course.title;
-
-        $("courseDescription").textContent =
-            course.description;
-
-        $("courseEyebrow").textContent =
-            course.eyebrow;
-
-        $("courseIntroIcon").textContent =
-            course.icon;
-
-        $("sidebarLessonCount").textContent =
-            `${toPersianNumber(course.lessons.length)} درس`;
-
-        $("courseIntroIcon").className =
-            "course-intro-icon " + courseId + "-course-icon";
-
-        renderLessonList();
-        updateProgress();
-
-        showPage("course");
-
-        openLesson(0);
-    }
-
-
-    /* =====================================
-       9. RENDER LESSON LIST
-    ===================================== */
-
-    function renderLessonList() {
-
-        if (!currentCourse) return;
-
-        const course = getCurrentCourse();
-
-        let html = "";
-        let lastChapter = "";
-
-        course.lessons.forEach((lesson, index) => {
-
-            if (lesson.chapter !== lastChapter) {
-
-                lastChapter = lesson.chapter;
-
-                html += `
-                    <div class="lesson-group">
-                        <div class="lesson-group-title">
-                            ${escapeHTML(lastChapter)}
-                        </div>
-                `;
-            }
-
-            const active = index === currentLessonIndex;
-            const completed = completedLessons.includes(lesson.id);
-
-            html += `
-                <button
-                    class="lesson-item
-                        ${active ? "active" : ""}
-                        ${completed ? "completed" : ""}"
-                    data-lesson-index="${index}"
-                    type="button"
-                >
-
-                    <span class="lesson-index">
-                        ${completed ? "✓" : toPersianNumber(index + 1)}
-                    </span>
-
-                    <span class="lesson-name">
-                        ${escapeHTML(lesson.title)}
-                    </span>
-
-                </button>
-            `;
-
-            const nextLesson = course.lessons[index + 1];
-
-            if (!nextLesson || nextLesson.chapter !== lastChapter) {
-                html += "</div>";
-            }
-
-        });
-
-        lessonList.innerHTML = html;
-
-        lessonList.querySelectorAll("[data-lesson-index]")
-            .forEach(button => {
-
-                button.addEventListener("click", () => {
-
-                    openLesson(
-                        Number(button.dataset.lessonIndex)
-                    );
-
-                });
-
-            });
-
-    }
-
-
-    /* =====================================
-       10. OPEN LESSON
-    ===================================== */
-
-    function openLesson(index) {
-
-        const course = getCurrentCourse();
-
-        if (!course || index < 0 || index >= course.lessons.length) {
-            return;
-        }
-
-        currentLessonIndex = index;
-
-        const lesson = getCurrentLesson();
-
-        $("lessonBreadcrumb").textContent =
-            `${course.title} / ${lesson.title}`;
-
-        $("lessonTitle").textContent = lesson.title;
-
-        $("lessonLead").textContent = lesson.lead;
-
-        $("lessonCategory").textContent = lesson.category;
-
-        $("lessonDuration").textContent = lesson.duration;
-
-        $("lessonBody").innerHTML = lesson.body;
-
-        $("keyTakeawayText").textContent = lesson.takeaway;
-
-        $("exerciseText").textContent = lesson.exercise;
-
-        $("lessonPage").dataset.lessonId = lesson.id;
-
-        // Load the lesson's starter code.
-        htmlEditor.value = lesson.html || "";
-        cssEditor.value = lesson.css || "";
-        jsEditor.value = lesson.js || "";
-
-        // Start with HTML editor visible.
-        switchEditor("html");
-
-        // Generate initial preview.
-        runCode();
-
-        renderLessonList();
-        updateProgress();
-        updateLessonNavigation();
-
-        showPage("lesson");
-    }
-
-
-    /* =====================================
-       11. LESSON PROGRESS
-    ===================================== */
-
-    function updateProgress() {
-
-        if (!currentCourse) return;
-
-        const lessons = getCurrentCourse().lessons;
-
-        const completed = lessons.filter(lesson =>
-            completedLessons.includes(lesson.id)
-        ).length;
-
-        const percentage = Math.round(
-            (completed / lessons.length) * 100
-        );
-
-        $("progressPercent").textContent =
-            `${toPersianNumber(percentage)}٪`;
-
-        $("progressFill").style.width =
-            `${percentage}%`;
-
-    }
-
-
-    /* =====================================
-       12. PREVIOUS / NEXT LESSON
-    ===================================== */
-
-    function updateLessonNavigation() {
-
-        const course = getCurrentCourse();
-
-        $("previousLessonBtn").disabled =
-            currentLessonIndex === 0;
-
-        $("nextLessonBtn").disabled =
-            currentLessonIndex === course.lessons.length - 1;
-
-    }
-
-    $("previousLessonBtn").addEventListener("click", () => {
-
-        if (currentLessonIndex > 0) {
-            openLesson(currentLessonIndex - 1);
-        }
-
-    });
-
-    $("nextLessonBtn").addEventListener("click", () => {
-
-        const course = getCurrentCourse();
-
-        if (currentLessonIndex < course.lessons.length - 1) {
-
-            markLessonCompleted(getCurrentLesson().id);
-
-            openLesson(currentLessonIndex + 1);
-
-        } else {
-
-            markLessonCompleted(getCurrentLesson().id);
-
-            alert("آفرین! این مسیر آموزشی را به پایان رساندی.");
-
-        }
-
-    });
-
-
-    /* =====================================
-       13. EDITOR TABS
-    ===================================== */
-
-    function switchEditor(editorName) {
-
-        currentEditor = editorName;
-
-        document.querySelectorAll(".editor-tab").forEach(tab => {
-
-            tab.classList.toggle(
-                "active",
-                tab.dataset.editor === editorName
-            );
-
-        });
-
-        document.querySelectorAll(".editor-panel").forEach(panel => {
-
-            panel.classList.toggle(
-                "active",
-                panel.dataset.panel === editorName
-            );
-
-        });
-
-        const names = {
-            html: "HTML",
-            css: "CSS",
-            js: "JavaScript"
-        };
-
-        $("editorLanguage").textContent =
-            names[editorName];
-
-    }
-
-    document.querySelectorAll(".editor-tab").forEach(tab => {
-
-        tab.addEventListener("click", () => {
-            switchEditor(tab.dataset.editor);
-        });
-
-    });
-
-
-    /* =====================================
-       14. LIVE CODE EXECUTION
-    ===================================== */
-
-    function runCode() {
-
-        const html = htmlEditor.value;
-        const css = cssEditor.value;
-        const js = jsEditor.value;
-
-        /*
-         * Escape the HTML closing-tag sequence inside
-         * JavaScript strings embedded in the iframe.
-         */
-
-        const safeCSS = JSON.stringify(css)
-            .replace(/</g, "\\u003c");
-
-        const safeJS = JSON.stringify(js)
-            .replace(/</g, "\\u003c");
-
-        /*
-         * CSS and JS are inserted using textContent.
-         * This avoids injecting user code directly
-         * into style/script HTML source.
-         */
-
-        const documentContent = `
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <style>
-        body {
-            font-family: Tahoma, Arial, sans-serif;
-            padding: 18px;
-            margin: 0;
-            line-height: 1.8;
-            color: #26334d;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        img {
-            max-width: 100%;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    ${html}
-
-    <script>
-
-        const customStyle = document.createElement("style");
-
-        customStyle.textContent = ${safeCSS};
-
-        document.head.appendChild(customStyle);
-
-
-        // Capture runtime errors inside the preview.
-
-        window.addEventListener("error", function(event) {
-
-            parent.postMessage({
-                type: "weblab-error",
-                message: event.message
-            }, "*");
-
-        });
-
-
-        // Execute user JavaScript.
-
-        try {
-
-            const userScript = document.createElement("script");
-
-            userScript.textContent = ${safeJS};
-
-            document.body.appendChild(userScript);
-
-            parent.postMessage({
-                type: "weblab-success"
-            }, "*");
-
-        } catch (error) {
-
-            parent.postMessage({
-                type: "weblab-error",
-                message: error.message
-            }, "*");
-
-        }
-
-    <\/script>
-
-</body>
-
-</html>
-        `;
-
-        previewFrame.srcdoc = documentContent;
-
-    }
-
-
-    /* =====================================
-       15. AUTO RUN
-    ===================================== */
-
-    function scheduleRun() {
-
-        clearTimeout(debounceTimer);
-
-        debounceTimer = setTimeout(() => {
-            runCode();
-        }, 650);
-
-    }
-
-    [htmlEditor, cssEditor, jsEditor].forEach(editor => {
-
-        editor.addEventListener("input", scheduleRun);
-
-        // Basic Tab indentation in the textarea.
-
-        editor.addEventListener("keydown", event => {
-
-            if (event.key === "Tab") {
-
-                event.preventDefault();
-
-                const start = editor.selectionStart;
-                const end = editor.selectionEnd;
-
-                editor.setRangeText(
-                    "  ",
-                    start,
-                    end,
-                    "end"
-                );
-
-                scheduleRun();
-
-            }
-
-            // Ctrl/Cmd + Enter runs the code.
-
-            if (
-                event.key === "Enter" &&
-                (event.ctrlKey || event.metaKey)
-            ) {
-
-                event.preventDefault();
-                runCode();
-
-            }
-
-        });
-
-    });
-
-
-    /* =====================================
-       16. RUN BUTTON
-    ===================================== */
-
-    $("runCodeBtn").addEventListener("click", () => {
-
-        runCode();
-
-        const button = $("runCodeBtn");
-
-        const original = button.innerHTML;
-
-        button.innerHTML = "✓ اجرا شد";
-
-        setTimeout(() => {
-            button.innerHTML = original;
-        }, 1200);
-
-    });
-
-
-    /* =====================================
-       17. RESET CODE
-    ===================================== */
-
-    function resetCode() {
-
-        const lesson = getCurrentLesson();
-
-        if (!lesson) return;
-
-        const confirmed = confirm(
-            "تمام تغییرات کد پاک شده و کد اولیه درس جایگزین شود؟"
-        );
-
-        if (!confirmed) return;
-
-        htmlEditor.value = lesson.html || "";
-        cssEditor.value = lesson.css || "";
-        jsEditor.value = lesson.js || "";
-
-        runCode();
-
-    }
-
-    $("resetCodeBtn").addEventListener("click", resetCode);
-
-    $("resetPlaygroundBtn").addEventListener("click", resetCode);
-
-
-    /* =====================================
-       18. COPY CODE
-    ===================================== */
-
-    async function copyCode() {
-
-        const editors = {
-            html: htmlEditor,
-            css: cssEditor,
-            js: jsEditor
-        };
-
-        const text = editors[currentEditor].value;
-
-        try {
-
-            await navigator.clipboard.writeText(text);
-
-        } catch (error) {
-
-            editors[currentEditor].select();
-
-            const copied = document.execCommand("copy");
-
-            if (!copied) {
-                alert("کپی کد امکان‌پذیر نبود.");
-                return;
-            }
-
-        }
-
-        const button = $("copyCodeBtn");
-
-        button.textContent = "✓";
-
-        setTimeout(() => {
-            button.textContent = "⧉";
-        }, 1000);
-
-    }
-
-    $("copyCodeBtn").addEventListener("click", copyCode);
-
-
-    /* =====================================
-       19. PREVIEW FULLSCREEN
-    ===================================== */
-
-    $("fullscreenPreviewBtn").addEventListener("click", async () => {
-
-        const preview = $("previewFrame");
-
-        try {
-
-            if (!document.fullscreenElement) {
-
-                await preview.requestFullscreen();
-
-            } else {
-
-                await document.exitFullscreen();
-
-            }
-
-        } catch (error) {
-
-            alert("تمام‌صفحه در این مرورگر پشتیبانی نمی‌شود.");
-
-        }
-
-    });
-
-
-    /* =====================================
-       20. IFRAME MESSAGE HANDLING
-    ===================================== */
-
-    window.addEventListener("message", event => {
-
-        // Accept messages only from our preview iframe.
-        if (event.source !== previewFrame.contentWindow) return;
-
-        if (event.data?.type === "weblab-error") {
-
-            console.warn(
-                "Preview JavaScript Error:",
-                event.data.message
-            );
-
-        }
-
-    });
-
-
-    /* =====================================
-       21. HOME NAVIGATION
-    ===================================== */
-
-    function goHome() {
-
-        currentCourse = null;
-
-        showPage("home");
-
-    }
-
-    $("homeLogo").addEventListener("click", event => {
-        event.preventDefault();
-        goHome();
-    });
-
-    $("footerLogo").addEventListener("click", event => {
-        event.preventDefault();
-        goHome();
-    });
-
-    $("startLearningBtn").addEventListener("click", () => {
-
-        $("courses").scrollIntoView({
-            behavior: "smooth"
-        });
-
-    });
-
-    $("backToHome").addEventListener("click", goHome);
-
-    $("backToCourse").addEventListener("click", () => {
-
-        renderLessonList();
-        updateProgress();
-
-        showPage("course");
-
-    });
-
-
-    /* =====================================
-       22. COURSE CARD EVENTS
-    ===================================== */
-
-    document.querySelectorAll("[data-open-course]").forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            openCourse(button.dataset.openCourse);
-
-        });
-
-    });
-
-    document.querySelectorAll(".course-card").forEach(card => {
-
-        card.addEventListener("click", event => {
-
-            if (event.target.closest("button")) return;
-
-            openCourse(card.dataset.course);
-
-        });
-
-    });
-
-
-    /* =====================================
-       23. NAVIGATION LINKS
-    ===================================== */
-
-    document.querySelectorAll(".nav-link").forEach(link => {
-
-        link.addEventListener("click", event => {
-
-            event.preventDefault();
-
-            const page = link.dataset.page;
-
-            if (page === "courses") {
-
-                goHome();
-
-                setTimeout(() => {
-
-                    $("courses").scrollIntoView({
-                        behavior: "smooth"
-                    });
-
-                }, 100);
-
-            } else {
-
-                showPage(page);
-
-            }
-
-        });
-
-    });
-
-
-    /* =====================================
-       24. MOBILE MENU
-    ===================================== */
-
-    $("mobileMenuBtn").addEventListener("click", () => {
-
-        document.querySelector(".main-nav")
-            .classList.toggle("open");
-
-    });
-
-
-    /* =====================================
-       25. INITIALIZATION
-    ===================================== */
-
-    function initializeApp() {
-
-        updateCourseCounts();
-
-        showPage("home");
-
-        console.log(
-            "WebLab initialized successfully."
-        );
-
-    }
-
-    initializeApp();
-
+      }
+    ]
+  }
+};
+
+
+/* =========================
+   STATE & HELPERS
+========================= */
+
+const $ = (selector, root = document) => root.querySelector(selector);
+const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+
+const STORAGE_KEY = "techlab_progress_v1";
+
+function loadProgress() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return saved && typeof saved === "object" ? saved : {};
+  } catch {
+    return {};
+  }
+}
+
+let progress = loadProgress();
+let currentCourse = null;
+let currentLessonIndex = 0;
+let activeEditor = "html";
+let initialCode = null;
+let runTimer = null;
+
+function saveProgress() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+  } catch (error) {
+    console.warn("Progress could not be saved.", error);
+  }
+}
+
+function getCompleted(courseId) {
+  return Array.isArray(progress[courseId]) ? progress[courseId] : [];
+}
+
+function isCompleted(courseId, index) {
+  return getCompleted(courseId).includes(index);
+}
+
+function completeLesson(courseId, index) {
+  const completed = getCompleted(courseId);
+  if (!completed.includes(index)) {
+    progress[courseId] = [...completed, index];
+    saveProgress();
+  }
+}
+
+function toPersianNumber(value) {
+  return Number(value).toLocaleString("fa-IR");
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+const pages = {
+  home: $("#homePage"),
+  course: $("#coursePage"),
+  lesson: $("#lessonPage"),
+  about: $("#aboutPage")
+};
+
+function showPage(pageName) {
+  Object.values(pages).forEach(page => page.classList.remove("active"));
+  pages[pageName].classList.add("active");
+
+  $$(".nav-link").forEach(link => link.classList.remove("active"));
+
+  if (pageName === "home") {
+    $('.nav-link[data-home]')?.classList.add("active");
+  } else if (pageName === "about") {
+    $('.nav-link[data-about]')?.classList.add("active");
+  } else if (pageName === "course" || pageName === "lesson") {
+    $('.nav-link[data-courses]')?.classList.add("active");
+  }
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  $(".main-nav").classList.remove("open");
+}
+
+function navigate(hash) {
+  window.location.hash = hash;
+}
+
+function openHome() {
+  showPage("home");
+  history.replaceState(null, "", window.location.pathname + window.location.search);
+}
+
+$$("[data-home]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    openHome();
+  });
 });
+
+$$("[data-courses]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    if (currentCourse) {
+      openCourse(currentCourse.id);
+    } else {
+      showPage("home");
+      setTimeout(() => $("#courses").scrollIntoView({ behavior: "smooth" }), 100);
+    }
+  });
+});
+
+$$("[data-about]").forEach(link => {
+  link.addEventListener("click", event => {
+    event.preventDefault();
+    showPage("about");
+  });
+});
+
+$("#mobileMenu").addEventListener("click", () => {
+  $(".main-nav").classList.toggle("open");
+});
+
+
+/* =========================
+   HOME & COURSE RENDERING
+========================= */
+
+function renderCourses() {
+  const grid = $("#courseGrid");
+  grid.innerHTML = Object.values(courses).map(course => {
+    const completed = getCompleted(course.id).length;
+    const percent = Math.round(completed / course.lessons.length * 100);
+
+    return `
+      <article class="course-card" style="--card-color:${course.color}">
+        <div class="course-card-top">
+          <div class="course-icon">${escapeHTML(course.icon)}</div>
+          <span class="level-tag">${escapeHTML(course.level)}</span>
+        </div>
+        <h3>${escapeHTML(course.title)}</h3>
+        <p>${escapeHTML(course.shortDescription)}</p>
+        <div class="course-card-meta">
+          <span>▤ ${toPersianNumber(course.lessons.length)} درس</span>
+          <span>◷ ${escapeHTML(course.duration)}</span>
+        </div>
+        <div class="course-card-footer">
+          <span class="course-progress">${toPersianNumber(percent)}٪ تکمیل شده</span>
+          <a href="#course-${course.id}" data-open-course="${course.id}">مشاهده دوره ←</a>
+        </div>
+      </article>
+    `;
+  }).join("");
+
+  $$("[data-open-course]").forEach(button => {
+    button.addEventListener("click", event => {
+      event.preventDefault();
+      openCourse(button.dataset.openCourse);
+    });
+  });
+}
+
+function openCourse(courseId) {
+  const course = courses[courseId];
+  if (!course) return;
+
+  currentCourse = course;
+  const completed = getCompleted(courseId);
+  const percent = Math.round(completed.length / course.lessons.length * 100);
+
+  $("#courseHero").style.setProperty("--course-color", course.color);
+  $("#courseHero").innerHTML = `
+    <div class="course-icon">${escapeHTML(course.icon)}</div>
+    <div class="section-kicker">LEARNING PATH / ${escapeHTML(course.id.toUpperCase())}</div>
+    <h1>${escapeHTML(course.fullTitle)}</h1>
+    <p>${escapeHTML(course.description)}</p>
+    <div class="course-hero-meta">
+      <span>◷ ${escapeHTML(course.duration)}</span>
+      <span>▤ ${toPersianNumber(course.lessons.length)} درس</span>
+      <span>◎ ${escapeHTML(course.level)}</span>
+      <span>✓ ${toPersianNumber(percent)}٪ تکمیل شده</span>
+    </div>
+  `;
+
+  $("#courseLessonCount").textContent =
+    `${toPersianNumber(course.lessons.length)} درس آموزشی`;
+
+  $("#courseLessonList").innerHTML = course.lessons.map((lesson, index) => `
+    <div class="course-lesson-item" data-lesson-index="${index}">
+      <div class="lesson-number">${toPersianNumber(index + 1)}</div>
+      <div class="lesson-item-info">
+        <strong>${escapeHTML(lesson.title)}</strong>
+        <small>${escapeHTML(lesson.duration)} · ${escapeHTML(lesson.category)}</small>
+      </div>
+      <span class="lesson-item-check">${isCompleted(courseId,index) ? "✓" : "›"}</span>
+    </div>
+  `).join("");
+
+  $$(".course-lesson-item").forEach(item => {
+    item.addEventListener("click", () => {
+      openLesson(courseId, Number(item.dataset.lessonIndex));
+    });
+  });
+
+  showPage("course");
+  history.replaceState(null, "", `#course-${courseId}`);
+}
+
+
+/* =========================
+   LESSON VIEW
+========================= */
+
+function openLesson(courseId, lessonIndex) {
+  const course = courses[courseId];
+  if (!course || !course.lessons[lessonIndex]) return;
+
+  currentCourse = course;
+  currentLessonIndex = lessonIndex;
+  const lesson = course.lessons[lessonIndex];
+
+  $("#sidebarCourseName").textContent = course.title;
+  $("#lessonCourseLink").textContent = course.title;
+  $("#lessonCourseLink").onclick = event => {
+    event.preventDefault();
+    openCourse(courseId);
+  };
+
+  $("#lessonBreadcrumb").textContent = lesson.title;
+  $("#lessonCategory").textContent = lesson.category;
+  $("#lessonDuration").textContent = lesson.duration;
+  $("#lessonTitle").textContent = lesson.title;
+  $("#lessonLead").textContent = lesson.lead;
+  $("#lessonBody").innerHTML = lesson.body;
+  $("#keyTakeawayText").textContent = lesson.takeaway;
+  $("#exerciseText").textContent = lesson.exercise;
+
+  renderSidebar();
+  loadEditor(lesson.code);
+  updateLessonNavigation();
+
+  showPage("lesson");
+  history.replaceState(null, "", `#lesson-${courseId}-${lessonIndex + 1}`);
+}
+
+function renderSidebar() {
+  const course = currentCourse;
+  const completed = getCompleted(course.id);
+  const percent = Math.round(completed.length / course.lessons.length * 100);
+
+  $("#progressPercent").textContent = `${toPersianNumber(percent)}٪`;
+  $("#progressFill").style.width = `${percent}%`;
+
+  $("#sidebarLessonList").innerHTML = course.lessons.map((lesson, index) => {
+    const active = index === currentLessonIndex;
+    const done = completed.includes(index);
+
+    return `
+      <button class="sidebar-lesson ${active ? "active" : ""} ${done ? "done" : ""}"
+        data-sidebar-index="${index}">
+        <span class="sidebar-num">${done ? "✓" : toPersianNumber(index + 1)}</span>
+        <span>${escapeHTML(lesson.title)}</span>
+      </button>
+    `;
+  }).join("");
+
+  $$(".sidebar-lesson").forEach(button => {
+    button.addEventListener("click", () => {
+      openLesson(course.id, Number(button.dataset.sidebarIndex));
+    });
+  });
+}
+
+function updateLessonNavigation() {
+  const previous = $("#previousLessonBtn");
+  const next = $("#nextLessonBtn");
+
+  previous.disabled = currentLessonIndex === 0;
+  previous.style.opacity = previous.disabled ? ".4" : "1";
+
+  next.textContent =
+    currentLessonIndex === currentCourse.lessons.length - 1
+      ? "پایان دوره ✓"
+      : "درس بعدی ←";
+}
+
+$("#previousLessonBtn").addEventListener("click", () => {
+  if (currentLessonIndex > 0) {
+    openLesson(currentCourse.id, currentLessonIndex - 1);
+  }
+});
+
+$("#nextLessonBtn").addEventListener("click", () => {
+  completeLesson(currentCourse.id, currentLessonIndex);
+  renderSidebar();
+
+  if (currentLessonIndex < currentCourse.lessons.length - 1) {
+    openLesson(currentCourse.id, currentLessonIndex + 1);
+  } else {
+    openCourse(currentCourse.id);
+  }
+
+  renderCourses();
+});
+
+$("#backToCourse").addEventListener("click", () => {
+  if (currentCourse) openCourse(currentCourse.id);
+});
+
+
+/* =========================
+   CODE EDITOR
+========================= */
+
+const editorElements = {
+  html: $("#htmlEditor"),
+  css: $("#cssEditor"),
+  js: $("#jsEditor")
+};
+
+function loadEditor(code) {
+  initialCode = { ...code };
+
+  Object.keys(editorElements).forEach(key => {
+    editorElements[key].value = code[key] || "";
+  });
+
+  setActiveEditor("html");
+  runCode();
+}
+
+function setActiveEditor(language) {
+  activeEditor = language;
+
+  $$(".editor-tab").forEach(tab => {
+    tab.classList.toggle("active", tab.dataset.editor === language);
+  });
+
+  Object.keys(editorElements).forEach(key => {
+    editorElements[key].classList.toggle("active", key === language);
+  });
+
+  $("#editorLanguage").textContent = language.toUpperCase();
+}
+
+$$(".editor-tab").forEach(tab => {
+  tab.addEventListener("click", () => setActiveEditor(tab.dataset.editor));
+});
+
+
+/* =========================
+   SAFE PREVIEW
+========================= */
+
+function buildPreviewDocument() {
+  const html = editorElements.html.value;
+  const css = editorElements.css.value;
+  const js = editorElements.js.value;
+
+  // User code runs inside a sandboxed iframe.
+  // Do not add allow-same-origin to the iframe sandbox.
+  const safeCss = css.replace(/<\/style/gi, "<\\/style");
+  const safeJs = js.replace(/<\/script/gi, "<\\/script");
+
+  return `<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; padding: 16px; font-family: Arial, sans-serif; }
+${safeCss}
+</style>
+</head>
+<body>
+${html}
+<script>
+window.addEventListener("error", function(event) {
+  parent.postMessage({
+    type: "TECHLAB_PREVIEW_ERROR",
+    message: event.message || "خطای اجرای کد"
+  }, "*");
+});
+try {
+  ${safeJs}
+} catch (error) {
+  parent.postMessage({
+    type: "TECHLAB_PREVIEW_ERROR",
+    message: error.message
+  }, "*");
+}
+<\/script>
+</body>
+</html>`;
+}
+
+function runCode() {
+  const frame = $("#previewFrame");
+  frame.srcdoc = buildPreviewDocument();
+  $("#runStatus").textContent = "کد اجرا شد";
+}
+
+function scheduleRun() {
+  clearTimeout(runTimer);
+  $("#runStatus").textContent = "در حال آماده‌سازی...";
+  runTimer = setTimeout(runCode, 650);
+}
+
+Object.values(editorElements).forEach(editor => {
+  editor.addEventListener("input", scheduleRun);
+});
+
+$("#runCodeBtn").addEventListener("click", () => {
+  clearTimeout(runTimer);
+  runCode();
+});
+
+$("#resetCodeBtn").addEventListener("click", () => {
+  if (!initialCode) return;
+  editorElements[activeEditor].value = initialCode[activeEditor] || "";
+  runCode();
+});
+
+$("#resetPlaygroundBtn").addEventListener("click", () => {
+  if (!initialCode) return;
+
+  Object.keys(editorElements).forEach(key => {
+    editorElements[key].value = initialCode[key] || "";
+  });
+
+  setActiveEditor("html");
+  runCode();
+});
+
+$("#copyCodeBtn").addEventListener("click", async () => {
+  const text = editorElements[activeEditor].value;
+
+  try {
+    await navigator.clipboard.writeText(text);
+    $("#runStatus").textContent = "کد کپی شد ✓";
+  } catch {
+    editorElements[activeEditor].select();
+    try {
+      document.execCommand("copy");
+      $("#runStatus").textContent = "کد کپی شد ✓";
+    } catch {
+      $("#runStatus").textContent = "کپی خودکار در دسترس نیست";
+    }
+  }
+});
+
+$("#fullscreenPreviewBtn").addEventListener("click", () => {
+  const frame = $("#previewFrame");
+
+  if (frame.requestFullscreen) {
+    frame.requestFullscreen().catch(() => {
+      $("#runStatus").textContent = "تمام‌صفحه در این مرورگر پشتیبانی نشد";
+    });
+  }
+});
+
+window.addEventListener("message", event => {
+  if (event.source !== $("#previewFrame").contentWindow) return;
+
+  if (event.data?.type === "TECHLAB_PREVIEW_ERROR") {
+    $("#runStatus").textContent =
+      "خطای کد: " + String(event.data.message).slice(0, 100);
+  }
+});
+
+
+/* =========================
+   INITIALIZE
+========================= */
+
+function initialize() {
+  renderCourses();
+
+  const hash = window.location.hash;
+
+  if (hash.startsWith("#course-")) {
+    const courseId = hash.replace("#course-", "");
+    if (courses[courseId]) {
+      openCourse(courseId);
+      return;
+    }
+  }
+
+  if (hash.startsWith("#lesson-")) {
+    const parts = hash.replace("#lesson-", "").split("-");
+    const courseId = parts[0];
+    const lessonIndex = Number(parts[1]) - 1;
+
+    if (courses[courseId] && Number.isInteger(lessonIndex)) {
+      openLesson(courseId, lessonIndex);
+      return;
+    }
+  }
+
+  showPage("home");
+}
+
+initialize();
 ```
