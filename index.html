@@ -87,164 +87,282 @@
     </div>
   </header>
 
-  <main>
-    <section class="section container" id="courses">
+  ```html
+<main>
+  <!-- مسیرهای یادگیری -->
+  <section class="section container" id="courses">
+    <div class="section-heading">
+      <span class="eyebrow">مسیر یادگیری</span>
+      <h2>از کجا شروع کنیم؟</h2>
+      <p>یک دوره را انتخاب کن و با ترتیب مناسب پیش برو.</p>
+    </div>
+
+    <div class="course-grid">
+      <article class="course-card">
+        <div class="course-icon html-icon">5</div>
+        <span class="course-level">مقدماتی</span>
+        <h3>HTML</h3>
+        <p>ساختار صفحات وب، عنوان‌ها، لینک‌ها، تصاویر، فهرست‌ها و فرم‌ها را یاد بگیر.</p>
+        <a href="#html">مشاهده درس‌ها ←</a>
+      </article>
+
+      <article class="course-card">
+        <div class="course-icon css-icon">✳</div>
+        <span class="course-level">مقدماتی</span>
+        <h3>CSS</h3>
+        <p>رنگ، فونت، فاصله‌ها، چیدمان و طراحی واکنش‌گرا را تمرین کن.</p>
+        <a href="#css">مشاهده درس‌ها ←</a>
+      </article>
+
+      <article class="course-card">
+        <div class="course-icon js-icon">JS</div>
+        <span class="course-level">مقدماتی تا متوسط</span>
+        <h3>JavaScript</h3>
+        <p>متغیرها، توابع، رویدادها و ساخت صفحات تعاملی را یاد بگیر.</p>
+        <a href="#javascript">مشاهده درس‌ها ←</a>
+      </article>
+
+      <article class="course-card">
+        <div class="course-icon django-icon">Py</div>
+        <span class="course-level">بک‌اند</span>
+        <h3>Python و Django</h3>
+        <p>مبانی Python و ساخت برنامه‌های وب با Django را یاد بگیر.</p>
+        <a href="#django">مشاهده درس‌ها ←</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- درس‌های HTML و CSS -->
+  <section class="section section-soft" id="lessons">
+    <div class="container">
       <div class="section-heading">
-        <span class="eyebrow">مسیر یادگیری</span>
-        <h2>از کجا شروع کنیم؟</h2>
-        <p>یک دوره را انتخاب کن و با ترتیب مناسب پیش برو.</p>
+        <span class="eyebrow">درس‌های رایگان</span>
+        <h2>مسیر یادگیری HTML و CSS</h2>
+        <p>درس‌ها را به ترتیب بخوان، مثال‌ها را بررسی کن و کدها را در محیط تمرین اجرا کن.</p>
       </div>
 
-      <div class="course-grid">
-        <article class="course-card">
-          <div class="course-icon html-icon">5</div>
-          <span class="course-level">مقدماتی</span>
-          <h3>HTML</h3>
-          <p>ساختار صفحات وب، عنوان‌ها، لینک‌ها، تصاویر و فرم‌ها را یاد بگیر.</p>
-          <a href="#html">مشاهده درس‌ها ←</a>
+      <div class="lesson-list">
+
+        <article class="lesson-card" id="html">
+          <div class="lesson-number">01</div>
+          <div class="lesson-content">
+            <span class="lesson-category">HTML · درس ۱</span>
+            <h3>ساختار یک صفحه HTML</h3>
+            <p>HTML ساختار محتوای صفحه را مشخص می‌کند. یک سند استاندارد شامل بخش‌های head و body است.</p>
+            <pre class="lesson-code"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="fa" dir="rtl"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;صفحه من&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;سلام دنیا!&lt;/h1&gt;
+  &lt;p&gt;اولین صفحه وب من&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            <p><strong>تمرین:</strong> متن عنوان و پاراگراف را تغییر بده.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
         </article>
 
-        <article class="course-card">
-          <div class="course-icon css-icon">✳</div>
-          <span class="course-level">مقدماتی</span>
-          <h3>CSS</h3>
-          <p>رنگ، فونت، چیدمان، انیمیشن و طراحی واکنش‌گرا را تمرین کن.</p>
-          <a href="#css">مشاهده درس‌ها ←</a>
+        <article class="lesson-card">
+          <div class="lesson-number">02</div>
+          <div class="lesson-content">
+            <span class="lesson-category">HTML · درس ۲</span>
+            <h3>عنوان‌ها و پاراگراف‌ها</h3>
+            <p>برای عنوان‌ها از تگ‌های h1 تا h6 و برای پاراگراف‌ها از تگ p استفاده می‌کنیم.</p>
+            <pre class="lesson-code"><code>&lt;h1&gt;آموزش برنامه‌نویسی&lt;/h1&gt;
+&lt;h2&gt;آموزش HTML&lt;/h2&gt;
+&lt;p&gt;در این درس با HTML آشنا می‌شویم.&lt;/p&gt;</code></pre>
+            <p><strong>تمرین:</strong> یک عنوان h2 و یک پاراگراف جدید اضافه کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
         </article>
 
-        <article class="course-card">
-          <div class="course-icon js-icon">JS</div>
-          <span class="course-level">مقدماتی تا متوسط</span>
-          <h3>JavaScript</h3>
-          <p>متغیرها، توابع، رویدادها و ساخت صفحات تعاملی را یاد بگیر.</p>
-          <a href="#javascript">مشاهده درس‌ها ←</a>
+        <article class="lesson-card">
+          <div class="lesson-number">03</div>
+          <div class="lesson-content">
+            <span class="lesson-category">HTML · درس ۳</span>
+            <h3>لینک‌ها و تصاویر</h3>
+            <p>تگ a برای ساخت لینک و تگ img برای نمایش تصویر به کار می‌رود. ویژگی href مقصد لینک و ویژگی src آدرس تصویر را مشخص می‌کند.</p>
+            <pre class="lesson-code"><code>&lt;a href="https://example.com"&gt;
+  مشاهده وب‌سایت
+&lt;/a&gt;
+
+&lt;img src="image.jpg" alt="توضیح تصویر"&gt;</code></pre>
+            <p><strong>نکته:</strong> ویژگی alt توضیح متنی تصویر را برای دسترس‌پذیری فراهم می‌کند.</p>
+            <p><strong>تمرین:</strong> یک لینک به سایت دلخواهت اضافه کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
         </article>
 
-        <article class="course-card">
-          <div class="course-icon django-icon">Py</div>
-          <span class="course-level">بک‌اند</span>
-          <h3>Python و Django</h3>
-          <p>مبانی Python، مسیرها، مدل‌ها و ساخت برنامه‌های وب را بشناس.</p>
-          <a href="#django">مشاهده درس‌ها ←</a>
+        <article class="lesson-card">
+          <div class="lesson-number">04</div>
+          <div class="lesson-content">
+            <span class="lesson-category">HTML · درس ۴</span>
+            <h3>فهرست‌ها</h3>
+            <p>از ul برای فهرست نشانه‌دار و از ol برای فهرست شماره‌دار استفاده می‌کنیم. هر مورد داخل li قرار می‌گیرد.</p>
+            <pre class="lesson-code"><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;CSS&lt;/li&gt;
+  &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;یادگیری HTML&lt;/li&gt;
+  &lt;li&gt;یادگیری CSS&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+            <p><strong>تمرین:</strong> فهرستی از سه فناوری مورد علاقه‌ات بساز.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
         </article>
-      </div>
-    </section>
 
-    <section class="section section-soft" id="lessons">
-      <div class="container">
-        <div class="section-heading">
-          <span class="eyebrow">درس‌های رایگان</span>
-          <h2>با مفاهیم پایه آشنا شو</h2>
-          <p>درس‌های نمونه برای شروع مسیر برنامه‌نویسی.</p>
-        </div>
+        <article class="lesson-card">
+          <div class="lesson-number">05</div>
+          <div class="lesson-content">
+            <span class="lesson-category">HTML · درس ۵</span>
+            <h3>فرم‌ها و ورودی‌ها</h3>
+            <p>فرم‌ها برای دریافت اطلاعات از کاربر استفاده می‌شوند. label عنوان ورودی و input محل وارد کردن اطلاعات است.</p>
+            <pre class="lesson-code"><code>&lt;form&gt;
+  &lt;label for="username"&gt;نام کاربری&lt;/label&gt;
+  &lt;input id="username" name="username" type="text"&gt;
 
-        <div class="lesson-list">
-          <article class="lesson-card" id="html">
-            <div class="lesson-number">01</div>
-            <div class="lesson-content">
-              <span class="lesson-category">HTML</span>
-              <h3>HTML چیست؟</h3>
-              <p>
-                HTML زبان نشانه‌گذاری صفحات وب است. با استفاده از تگ‌ها،
-                ساختار محتوای صفحه را تعریف می‌کنیم.
-              </p>
-              <pre class="lesson-code"><code>&lt;h1&gt;سلام دنیا!&lt;/h1&gt;
-&lt;p&gt;این اولین صفحه من است.&lt;/p&gt;</code></pre>
-              <p>تگ h1 برای عنوان اصلی و تگ p برای یک پاراگراف استفاده می‌شود.</p>
-            </div>
-          </article>
+  &lt;label for="email"&gt;ایمیل&lt;/label&gt;
+  &lt;input id="email" name="email" type="email"&gt;
 
-          <article class="lesson-card" id="css">
-            <div class="lesson-number">02</div>
-            <div class="lesson-content">
-              <span class="lesson-category">CSS</span>
-              <h3>CSS چیست؟</h3>
-              <p>
-                CSS ظاهر عناصر HTML را کنترل می‌کند؛ از رنگ و اندازه
-                نوشته‌ها تا چیدمان کامل صفحه.
-              </p>
-              <pre class="lesson-code"><code>h1 {
+  &lt;button type="submit"&gt;ارسال&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            <p><strong>تمرین:</strong> یک ورودی برای دریافت نام کاربر اضافه کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
+
+        <article class="lesson-card" id="css">
+          <div class="lesson-number">06</div>
+          <div class="lesson-content">
+            <span class="lesson-category">CSS · درس ۱</span>
+            <h3>رنگ، متن و پس‌زمینه</h3>
+            <p>CSS ظاهر عناصر HTML را کنترل می‌کند. ویژگی color رنگ متن و background-color رنگ پس‌زمینه را تعیین می‌کند.</p>
+            <pre class="lesson-code"><code>h1 {
   color: royalblue;
   font-size: 32px;
+}
+
+p {
+  color: #334155;
+  background-color: #f1f5f9;
 }</code></pre>
-              <p>این قانون رنگ عنوان‌ها را آبی می‌کند و اندازه نوشته را افزایش می‌دهد.</p>
-            </div>
-          </article>
+            <p><strong>تمرین:</strong> رنگ عنوان را سبز و اندازه آن را 36 پیکسل کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
 
-          <article class="lesson-card" id="javascript">
-            <div class="lesson-number">03</div>
-            <div class="lesson-content">
-              <span class="lesson-category">JavaScript</span>
-              <h3>JavaScript چیست؟</h3>
-              <p>
-                JavaScript به صفحه وب امکان واکنش به کلیک کاربر،
-                بررسی داده‌ها و تغییر محتوا را می‌دهد.
-              </p>
-              <pre class="lesson-code"><code>const button = document.querySelector("button");
+        <article class="lesson-card">
+          <div class="lesson-number">07</div>
+          <div class="lesson-content">
+            <span class="lesson-category">CSS · درس ۲</span>
+            <h3>کلاس‌ها و انتخابگرها</h3>
+            <p>با ویژگی class می‌توانیم عناصر مختلف را برای استایل‌دهی انتخاب کنیم. نام کلاس در CSS با نقطه شروع می‌شود.</p>
+            <pre class="lesson-code"><code>&lt;p class="highlight"&gt;
+  این متن مهم است.
+&lt;/p&gt;
 
-button.addEventListener("click", () => {
-  alert("سلام برنامه‌نویس!");
-});</code></pre>
-              <p>با کلیک روی دکمه، یک پیام به کاربر نمایش داده می‌شود.</p>
-            </div>
-          </article>
+/* در CSS */
+.highlight {
+  color: darkorange;
+  font-weight: bold;
+}</code></pre>
+            <p><strong>تمرین:</strong> کلاسی به نام box بساز و به آن پس‌زمینه و فاصله داخلی بده.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
 
-          <article class="lesson-card" id="django">
-            <div class="lesson-number">04</div>
-            <div class="lesson-content">
-              <span class="lesson-category">Python و Django</span>
-              <h3>Django چیست؟</h3>
-              <p>
-                Django چارچوبی برای ساخت بک‌اند با Python است.
-                برای یادگیری آن بهتر است ابتدا مبانی Python را بلد باشی.
-              </p>
-              <pre class="lesson-code"><code>from django.http import HttpResponse
+        <article class="lesson-card">
+          <div class="lesson-number">08</div>
+          <div class="lesson-content">
+            <span class="lesson-category">CSS · درس ۳</span>
+            <h3>فاصله‌ها و کادرها</h3>
+            <p>margin فاصله بیرونی، padding فاصله داخلی و border خط دور عنصر را مشخص می‌کند.</p>
+            <pre class="lesson-code"><code>.card {
+  margin: 20px;
+  padding: 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+}</code></pre>
+            <p><strong>تمرین:</strong> یک کارت با گوشه‌های گرد و فاصله داخلی مناسب طراحی کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
 
-def home(request):
-    return HttpResponse("سلام از Django!")</code></pre>
-              <p>
-                این نمونه برای اجرا به یک پروژه Django نیاز دارد؛
-                GitHub Pages به‌تنهایی قادر به اجرای آن نیست.
-              </p>
-            </div>
-          </article>
-        </div>
+        <article class="lesson-card">
+          <div class="lesson-number">09</div>
+          <div class="lesson-content">
+            <span class="lesson-category">CSS · درس ۴</span>
+            <h3>چیدمان با Flexbox</h3>
+            <p>Flexbox برای چیدن عناصر در ردیف یا ستون و تنظیم فاصله و تراز آن‌ها استفاده می‌شود.</p>
+            <pre class="lesson-code"><code>.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}</code></pre>
+            <p><strong>تمرین:</strong> سه کارت بساز و با Flexbox کنار هم قرارشان بده.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
+
+        <article class="lesson-card">
+          <div class="lesson-number">10</div>
+          <div class="lesson-content">
+            <span class="lesson-category">CSS · درس ۵</span>
+            <h3>طراحی واکنش‌گرا</h3>
+            <p>با media query می‌توانیم ظاهر صفحه را برای نمایشگرهای کوچک تغییر دهیم.</p>
+            <pre class="lesson-code"><code>.cards {
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .cards {
+    flex-direction: column;
+  }
+}</code></pre>
+            <p><strong>تمرین:</strong> مقدار breakpoint را تغییر بده و رفتار چیدمان را بررسی کن.</p>
+            <a href="#practice">رفتن به محیط تمرین ←</a>
+          </div>
+        </article>
+
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section container" id="practice">
-      <div class="section-heading">
-        <span class="eyebrow">یادگیری با انجام دادن</span>
-        <h2>محیط تمرین کدنویسی</h2>
-        <p>کد HTML و CSS را تغییر بده و نتیجه را ببین.</p>
-      </div>
+  <!-- محیط تمرین -->
+  <section class="section container" id="practice">
+    <div class="section-heading">
+      <span class="eyebrow">یادگیری با انجام دادن</span>
+      <h2>محیط تمرین کدنویسی</h2>
+      <p>کد HTML و CSS را تغییر بده و نتیجه را مشاهده کن.</p>
+    </div>
 
-      <div class="playground">
-        <div class="editor-panel">
-          <label for="htmlCode">کد HTML</label>
-          <textarea
-            id="htmlCode"
-            dir="ltr"
-            spellcheck="false"
-            aria-label="ویرایشگر کد HTML"
-          ><h1>سلام دانشجو!</h1>
+    <div class="playground">
+      <div class="editor-panel">
+        <label for="htmlCode">کد HTML</label>
+        <textarea id="htmlCode" dir="ltr" spellcheck="false" aria-label="ویرایشگر کد HTML"><h1>سلام دانشجو!</h1>
 <p>این اولین صفحه وب من است.</p>
 <button>روی من کلیک کن</button></textarea>
 
-          <label for="cssCode">کد CSS</label>
-          <textarea
-            id="cssCode"
-            dir="ltr"
-            spellcheck="false"
-            aria-label="ویرایشگر کد CSS"
-          >body {
-  font-family: sans-serif;
+        <label for="cssCode">کد CSS</label>
+        <textarea id="cssCode" dir="ltr" spellcheck="false" aria-label="ویرایشگر کد CSS">body {
+  font-family: "Vazirmatn", Tahoma, sans-serif;
   padding: 20px;
   color: #1e293b;
 }
+
 h1 {
   color: royalblue;
 }
+
 button {
   padding: 10px 16px;
   border: 0;
@@ -254,90 +372,81 @@ button {
   cursor: pointer;
 }</textarea>
 
-          <div class="editor-actions">
-            <button class="button button-primary" id="runCode" type="button">
-              ▶ اجرای کد
-            </button>
-            <button class="button button-light" id="resetCode" type="button">
-              بازنشانی
-            </button>
-          </div>
-          <p class="small-note">
-            نکته: کد در یک قاب جداگانه اجرا می‌شود.
-          </p>
+        <div class="editor-actions">
+          <button class="button button-primary" id="runCode" type="button">▶ اجرای کد</button>
+          <button class="button button-light" id="resetCode" type="button">بازنشانی</button>
         </div>
 
-        <div class="preview-panel">
-          <div class="preview-header">
-            <span>پیش‌نمایش خروجی</span>
-            <span class="preview-status">آماده اجرا</span>
-          </div>
-          <iframe
-            id="preview"
-            title="پیش‌نمایش خروجی کد"
-            sandbox=""
-            referrerpolicy="no-referrer"
-          ></iframe>
-        </div>
+        <p class="small-note">کد در یک قاب جداگانه اجرا می‌شود.</p>
       </div>
-    </section>
 
-    <section class="section section-soft" id="quiz">
-      <div class="container quiz-container">
-        <div class="section-heading">
-          <span class="eyebrow">سنجش یادگیری</span>
-          <h2>آزمون کوتاه HTML</h2>
-          <p>به سؤال‌ها پاسخ بده و نتیجه را مشاهده کن.</p>
+      <div class="preview-panel">
+        <div class="preview-header">
+          <span>پیش‌نمایش خروجی</span>
+          <span class="preview-status">آماده اجرا</span>
         </div>
-
-        <form id="quizForm" class="quiz-card">
-          <fieldset class="question">
-            <legend>۱. کدام تگ برای عنوان اصلی HTML استفاده می‌شود؟</legend>
-            <label><input type="radio" name="q1" value="a"> <code>&lt;p&gt;</code></label>
-            <label><input type="radio" name="q1" value="b"> <code>&lt;h1&gt;</code></label>
-            <label><input type="radio" name="q1" value="c"> <code>&lt;img&gt;</code></label>
-          </fieldset>
-
-          <fieldset class="question">
-            <legend>۲. وظیفه اصلی CSS چیست؟</legend>
-            <label><input type="radio" name="q2" value="a"> ذخیره اطلاعات در پایگاه داده</label>
-            <label><input type="radio" name="q2" value="b"> ساخت منطق سمت سرور</label>
-            <label><input type="radio" name="q2" value="c"> تعیین ظاهر و چیدمان صفحه</label>
-          </fieldset>
-
-          <fieldset class="question">
-            <legend>۳. کدام تگ برای ایجاد لینک استفاده می‌شود؟</legend>
-            <label><input type="radio" name="q3" value="a"> <code>&lt;a&gt;</code></label>
-            <label><input type="radio" name="q3" value="b"> <code>&lt;div&gt;</code></label>
-            <label><input type="radio" name="q3" value="c"> <code>&lt;h2&gt;</code></label>
-          </fieldset>
-
-          <button class="button button-primary" type="submit">
-            بررسی پاسخ‌ها
-          </button>
-          <button class="button button-light" id="resetQuiz" type="button">
-            تلاش دوباره
-          </button>
-
-          <div id="quizResult" class="quiz-result" role="status" aria-live="polite" hidden></div>
-        </form>
+        <iframe
+          id="preview"
+          title="پیش‌نمایش خروجی کد"
+          sandbox=""
+          referrerpolicy="no-referrer"
+        ></iframe>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section class="section container" id="about">
-      <div class="about-card">
-        <div>
-          <span class="eyebrow">درباره پروژه</span>
-          <h2>دانش باید در دسترس همه باشد.</h2>
-          <p>
-            این آکادمی با هدف فراهم کردن منابع رایگان یادگیری برنامه‌نویسی
-            برای دانشجویان و علاقه‌مندان ساخته شده است.
-          </p>
-        </div>
-        <a class="button button-primary" href="#courses">شروع یادگیری</a>
+  <!-- آزمون HTML -->
+  <section class="section section-soft" id="quiz">
+    <div class="container quiz-container">
+      <div class="section-heading">
+        <span class="eyebrow">سنجش یادگیری</span>
+        <h2>آزمون کوتاه HTML</h2>
+        <p>به سؤال‌ها پاسخ بده و نتیجه را مشاهده کن.</p>
       </div>
-    </section>
-  </main>
+
+      <form id="quizForm" class="quiz-card">
+        <fieldset class="question">
+          <legend>۱. کدام تگ برای عنوان اصلی استفاده می‌شود؟</legend>
+          <label><input type="radio" name="q1" value="a"> <code>&lt;p&gt;</code></label>
+          <label><input type="radio" name="q1" value="b"> <code>&lt;h1&gt;</code></label>
+          <label><input type="radio" name="q1" value="c"> <code>&lt;img&gt;</code></label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>۲. وظیفه اصلی CSS چیست؟</legend>
+          <label><input type="radio" name="q2" value="a"> ذخیره اطلاعات در پایگاه داده</label>
+          <label><input type="radio" name="q2" value="b"> ساخت منطق سمت سرور</label>
+          <label><input type="radio" name="q2" value="c"> تعیین ظاهر و چیدمان صفحه</label>
+        </fieldset>
+
+        <fieldset class="question">
+          <legend>۳. کدام تگ برای ساخت لینک استفاده می‌شود؟</legend>
+          <label><input type="radio" name="q3" value="a"> <code>&lt;a&gt;</code></label>
+          <label><input type="radio" name="q3" value="b"> <code>&lt;div&gt;</code></label>
+          <label><input type="radio" name="q3" value="c"> <code>&lt;h2&gt;</code></label>
+        </fieldset>
+
+        <button class="button button-primary" type="submit">بررسی پاسخ‌ها</button>
+        <button class="button button-light" id="resetQuiz" type="button">تلاش دوباره</button>
+
+        <div id="quizResult" class="quiz-result" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- درباره پروژه -->
+  <section class="section container" id="about">
+    <div class="about-card">
+      <div>
+        <span class="eyebrow">درباره پروژه</span>
+        <h2>دانش باید در دسترس همه باشد.</h2>
+        <p>این آکادمی با هدف فراهم کردن منابع رایگان یادگیری برنامه‌نویسی برای دانشجویان و علاقه‌مندان ساخته شده است.</p>
+      </div>
+      <a class="button button-primary" href="#courses">شروع یادگیری</a>
+    </div>
+  </section>
+</main>
+```
 
   <footer class="site-footer">
     <div class="container footer-content">
