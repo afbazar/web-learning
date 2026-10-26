@@ -1085,29 +1085,14 @@ addCurriculum("javascript",[{"title":"متغیرها و انواع داده","ca
 
 
 
-/* Initialize after the full curriculum has been registered. */
-document.addEventListener("DOMContentLoaded", () => {
-  renderCourses();
-  const hash = window.location.hash;
-  if (hash.startsWith("#course-")) {
-    const id = hash.slice("#course-".length);
-    if (courses[id]) return openCourse(id);
-  }
-  if (hash.startsWith("#lesson-")) {
-    const parts = hash.slice("#lesson-".length).split("-");
-    const id = parts[0];
-    const index = Number(parts[1]) - 1;
-    if (courses[id] && Number.isInteger(index)) return openLesson(id, index);
-  }
-  if (hash === "#about") return showPage("about");
-  showPage("home");
-  if (hash === "#courses") requestAnimationFrame(() => $("#courses").scrollIntoView({block:"start"}));
-});
+/* Initialize after every course and lesson has been registered. */
+initialize();
 
-/* Use event delegation so both static and dynamically rendered course cards work. */
+/* Intercept course links before the browser changes the hash. */
 document.addEventListener("click", event => {
-  const cardLink = event.target.closest("[data-open-course]");
-  if (!cardLink) return;
+  const link = event.target.closest("a[data-open-course]");
+  if (!link) return;
   event.preventDefault();
-  openCourse(cardLink.dataset.openCourse);
-});
+  event.stopPropagation();
+  openCourse(link.dataset.openCourse);
+}, true);
