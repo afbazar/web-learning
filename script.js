@@ -2,7 +2,7 @@
 "use strict";
 
 /* =========================
-   انتخاب و نمایش دوره‌ها
+   مدیریت دوره‌ها
 ========================= */
 
 function showCourse(course) {
@@ -14,12 +14,8 @@ function showCourse(course) {
   const comingTitle = document.getElementById("coming-title");
   const comingDescription = document.getElementById("coming-description");
 
-  // اگر عناصر اصلی وجود نداشته باشند، ادامه نده
-  if (!courses) return;
-
-  // ابتدا همه بخش‌ها را مخفی کن
-  courses.hidden = true;
-
+  // ابتدا تمام بخش‌های دوره را مخفی کن.
+  if (courses) courses.hidden = true;
   if (htmlLessons) htmlLessons.hidden = true;
   if (cssLessons) cssLessons.hidden = true;
   if (comingSoon) comingSoon.hidden = true;
@@ -33,39 +29,42 @@ function showCourse(course) {
     cssLessons.hidden = false;
     target = cssLessons;
   } else if (
-    course === "javascript" ||
-    course === "django"
+    (course === "javascript" || course === "django") &&
+    comingSoon
   ) {
-    if (comingSoon) {
-      comingSoon.hidden = false;
-      target = comingSoon;
+    comingSoon.hidden = false;
+    target = comingSoon;
 
-      if (comingTitle && comingDescription) {
-        if (course === "javascript") {
-          comingTitle.textContent = "دوره JavaScript";
-          comingDescription.textContent =
-            "در این دوره با متغیرها، شرط‌ها، حلقه‌ها، توابع و تعامل با صفحات وب آشنا می‌شوی.";
-        } else {
-          comingTitle.textContent = "دوره Python و Django";
-          comingDescription.textContent =
-            "در این دوره با زبان Python و ساخت وب‌سایت‌های پویا با Django آشنا خواهی شد.";
-        }
+    if (comingTitle && comingDescription) {
+      if (course === "javascript") {
+        comingTitle.textContent = "دوره JavaScript";
+        comingDescription.textContent =
+          "در این مسیر با متغیرها، شرط‌ها، حلقه‌ها، توابع و تعامل با صفحات وب آشنا می‌شوی.";
+      } else {
+        comingTitle.textContent = "دوره Python و Django";
+        comingDescription.textContent =
+          "در این مسیر با Python و ساخت وب‌سایت‌های پویا با Django آشنا می‌شوی.";
       }
-    } else {
-      courses.hidden = false;
     }
   } else {
-    courses.hidden = false;
+    if (courses) courses.hidden = false;
+    target = courses;
   }
 
-  target.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
+  if (target) {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
 }
 
+// تابع برای دکمه‌های onclick در HTML
+window.showCourse = showCourse;
+
+
 /* =========================
-   اجرای کد HTML و CSS
+   اجرای محیط تمرین
 ========================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -85,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const htmlCode = htmlInput.value;
     const cssCode = cssInput.value;
 
-    preview.srcdoc = `<!DOCTYPE html>
+    const output = `<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -95,7 +94,7 @@ body {
   font-family: Tahoma, sans-serif;
   line-height: 1.9;
   padding: 16px;
-  color: #1e293b;
+  color: #172033;
 }
 ${cssCode}
 </style>
@@ -105,8 +104,10 @@ ${htmlCode}
 </body>
 </html>`;
 
+    preview.srcdoc = output;
+
     if (previewStatus) {
-      previewStatus.textContent = "کد با موفقیت اجرا شد.";
+      previewStatus.textContent = "کد اجرا شد.";
     }
   }
 
@@ -127,6 +128,7 @@ ${htmlCode}
     });
   }
 
+  // نمایش نمونه اولیه
   if (htmlInput && cssInput && preview) {
     runCode();
 
@@ -134,6 +136,7 @@ ${htmlCode}
       previewStatus.textContent = "آماده اجرا";
     }
   }
+
 
   /* =========================
      آزمون HTML
@@ -157,7 +160,7 @@ ${htmlCode}
       let unanswered = 0;
       const total = Object.keys(answers).length;
 
-      for (const question in answers) {
+      Object.keys(answers).forEach(function (question) {
         const selected = quizForm.querySelector(
           `input[name="${question}"]:checked`
         );
@@ -167,22 +170,23 @@ ${htmlCode}
         } else if (selected.value === answers[question]) {
           score++;
         }
-      }
+      });
 
       quizResult.hidden = false;
 
       if (unanswered > 0) {
         quizResult.textContent =
-          `لطفاً به همه سؤال‌ها پاسخ بده. پاسخ درست فعلی: ${score} از ${total}.`;
-      } else {
-        quizResult.textContent =
-          `نتیجه آزمون: ${score} از ${total}.`;
+          `هنوز به همه سؤال‌ها پاسخ نداده‌ای. پاسخ درست: ${score} از ${total}.`;
+        return;
+      }
 
-        if (score === total) {
-          quizResult.textContent += " تمام پاسخ‌ها درست هستند.";
-        } else {
-          quizResult.textContent += " پاسخ‌های اشتباه را مرور کن.";
-        }
+      quizResult.textContent =
+        `نتیجه آزمون: ${score} از ${total} پاسخ درست.`;
+
+      if (score === total) {
+        quizResult.textContent += " تمام پاسخ‌ها درست هستند.";
+      } else {
+        quizResult.textContent += " پاسخ‌های اشتباه را مرور کن و دوباره تلاش کن.";
       }
     });
   }
@@ -195,15 +199,6 @@ ${htmlCode}
     });
   }
 
-  /* =========================
-     نمایش سال جاری
-  ========================= */
-
-  const yearElement = document.getElementById("currentYear");
-
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
 
   /* =========================
      دکمه‌های بازگشت
@@ -214,10 +209,15 @@ ${htmlCode}
       showCourse("all");
     });
   });
+
+
+  /* =========================
+     سال جاری در پابرگ
+  ========================= */
+
+  const yearElement = document.getElementById("currentYear");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 });
-
-/* =========================
-   دسترسی به تابع از HTML
-========================= */
-
-window.showCourse = showCourse;
