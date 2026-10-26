@@ -1,3 +1,10 @@
+
+"use strict";
+
+/* =========================
+   انتخاب و نمایش دوره‌ها
+========================= */
+
 function showCourse(course) {
   const courses = document.getElementById("courses");
   const htmlLessons = document.getElementById("html-lessons");
@@ -7,49 +14,48 @@ function showCourse(course) {
   const comingTitle = document.getElementById("coming-title");
   const comingDescription = document.getElementById("coming-description");
 
-  if (!courses || !htmlLessons || !cssLessons) {
-    return;
-  }
+  // اگر عناصر اصلی وجود نداشته باشند، ادامه نده
+  if (!courses) return;
 
-  // ابتدا تمام صفحات دوره را مخفی می‌کنیم.
+  // ابتدا همه بخش‌ها را مخفی کن
   courses.hidden = true;
-  htmlLessons.hidden = true;
-  cssLessons.hidden = true;
 
-  if (comingSoon) {
-    comingSoon.hidden = true;
-  }
+  if (htmlLessons) htmlLessons.hidden = true;
+  if (cssLessons) cssLessons.hidden = true;
+  if (comingSoon) comingSoon.hidden = true;
 
   let target = courses;
 
-  if (course === "html") {
+  if (course === "html" && htmlLessons) {
     htmlLessons.hidden = false;
     target = htmlLessons;
-  } else if (course === "css") {
+  } else if (course === "css" && cssLessons) {
     cssLessons.hidden = false;
     target = cssLessons;
-  } else if (course === "javascript" || course === "django") {
+  } else if (
+    course === "javascript" ||
+    course === "django"
+  ) {
     if (comingSoon) {
       comingSoon.hidden = false;
       target = comingSoon;
 
-      if (course === "javascript") {
-        comingTitle.textContent = "دوره JavaScript";
-        comingDescription.textContent =
-          "درس‌های JavaScript در مرحله بعدی به آکادمی اضافه می‌شوند.";
-      } else {
-        comingTitle.textContent = "دوره Python و Django";
-        comingDescription.textContent =
-          "برای ساخت برنامه‌های Django به یک محیط پشتیبان سمت سرور نیاز داریم.";
+      if (comingTitle && comingDescription) {
+        if (course === "javascript") {
+          comingTitle.textContent = "دوره JavaScript";
+          comingDescription.textContent =
+            "در این دوره با متغیرها، شرط‌ها، حلقه‌ها، توابع و تعامل با صفحات وب آشنا می‌شوی.";
+        } else {
+          comingTitle.textContent = "دوره Python و Django";
+          comingDescription.textContent =
+            "در این دوره با زبان Python و ساخت وب‌سایت‌های پویا با Django آشنا خواهی شد.";
+        }
       }
     } else {
       courses.hidden = false;
-      target = courses;
     }
   } else {
-    // بازگشت به فهرست دوره‌ها
     courses.hidden = false;
-    target = courses;
   }
 
   target.scrollIntoView({
@@ -59,7 +65,7 @@ function showCourse(course) {
 }
 
 /* =========================
-   محیط اجرای HTML و CSS
+   اجرای کد HTML و CSS
 ========================= */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -74,22 +80,19 @@ document.addEventListener("DOMContentLoaded", function () {
   const initialCSS = cssInput ? cssInput.value : "";
 
   function runCode() {
-    if (!htmlInput || !cssInput || !preview) {
-      return;
-    }
+    if (!htmlInput || !cssInput || !preview) return;
 
     const htmlCode = htmlInput.value;
     const cssCode = cssInput.value;
 
-    const output = `<!DOCTYPE html>
+    preview.srcdoc = `<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.min.css">
 <style>
 body {
-  font-family: "Vazirmatn", Tahoma, sans-serif;
+  font-family: Tahoma, sans-serif;
   line-height: 1.9;
   padding: 16px;
   color: #1e293b;
@@ -102,10 +105,8 @@ ${htmlCode}
 </body>
 </html>`;
 
-    preview.srcdoc = output;
-
     if (previewStatus) {
-      previewStatus.textContent = "کد اجرا شد";
+      previewStatus.textContent = "کد با موفقیت اجرا شد.";
     }
   }
 
@@ -115,23 +116,17 @@ ${htmlCode}
 
   if (resetButton) {
     resetButton.addEventListener("click", function () {
-      if (htmlInput) {
-        htmlInput.value = initialHTML;
-      }
-
-      if (cssInput) {
-        cssInput.value = initialCSS;
-      }
+      if (htmlInput) htmlInput.value = initialHTML;
+      if (cssInput) cssInput.value = initialCSS;
 
       runCode();
 
       if (previewStatus) {
-        previewStatus.textContent = "کد بازنشانی شد";
+        previewStatus.textContent = "کد به حالت اولیه برگشت.";
       }
     });
   }
 
-  // اجرای اولیه نمونه کد
   if (htmlInput && cssInput && preview) {
     runCode();
 
@@ -160,8 +155,9 @@ ${htmlCode}
 
       let score = 0;
       let unanswered = 0;
+      const total = Object.keys(answers).length;
 
-      Object.keys(answers).forEach(function (question) {
+      for (const question in answers) {
         const selected = quizForm.querySelector(
           `input[name="${question}"]:checked`
         );
@@ -171,21 +167,21 @@ ${htmlCode}
         } else if (selected.value === answers[question]) {
           score++;
         }
-      });
+      }
 
       quizResult.hidden = false;
 
       if (unanswered > 0) {
         quizResult.textContent =
-          `به همه سؤال‌ها پاسخ نداده‌ای. پاسخ درست فعلی: ${score} از 3.`;
+          `لطفاً به همه سؤال‌ها پاسخ بده. پاسخ درست فعلی: ${score} از ${total}.`;
       } else {
         quizResult.textContent =
-          `نتیجه آزمون: ${score} از 3 پاسخ درست.`;
+          `نتیجه آزمون: ${score} از ${total}.`;
 
-        if (score === 3) {
-          quizResult.textContent += " همه پاسخ‌ها درست هستند.";
+        if (score === total) {
+          quizResult.textContent += " تمام پاسخ‌ها درست هستند.";
         } else {
-          quizResult.textContent += " پاسخ‌ها را مرور کن و دوباره تلاش کن.";
+          quizResult.textContent += " پاسخ‌های اشتباه را مرور کن.";
         }
       }
     });
@@ -200,7 +196,7 @@ ${htmlCode}
   }
 
   /* =========================
-     سال جاری در صورت وجود
+     نمایش سال جاری
   ========================= */
 
   const yearElement = document.getElementById("currentYear");
@@ -208,5 +204,20 @@ ${htmlCode}
   if (yearElement) {
     yearElement.textContent = new Date().getFullYear();
   }
+
+  /* =========================
+     دکمه‌های بازگشت
+  ========================= */
+
+  document.querySelectorAll("[data-back-to-courses]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      showCourse("all");
+    });
+  });
 });
-```
+
+/* =========================
+   دسترسی به تابع از HTML
+========================= */
+
+window.showCourse = showCourse;
