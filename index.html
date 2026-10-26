@@ -1,1 +1,120 @@
 
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>آکادمی کدنویسی</title>
+  <meta name="description" content="آموزش رایگان طراحی وب و برنامه‌نویسی">
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, sans-serif;
+      background: #f5f7fb;
+      color: #1e293b;
+      line-height: 1.9;
+    }
+
+    header {
+      background: #172554;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 35px auto;
+      padding: 0 18px;
+    }
+
+    .courses {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .course {
+      background: white;
+      padding: 22px;
+      border-radius: 14px;
+      box-shadow: 0 3px 12px #0000000a;
+    }
+
+    .course a {
+      color: #1d4ed8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px;
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>آکادمی رایگان کدنویسی</h1>
+    <p>از اولین خط کد تا ساخت پروژه واقعی</p>
+  </header>
+
+  <main>
+    <h2>مسیرهای یادگیری</h2>
+    <p>یک دوره را انتخاب کن و قدم‌به‌قدم یاد بگیر.</p>
+
+    <section class="courses">
+      <article class="course">
+        <h3>HTML</h3>
+        <p>ساختار صفحات وب را یاد بگیر.</p>
+        <a href="#html">شروع یادگیری ←</a>
+      </article>
+
+      <article class="course">
+        <h3>CSS</h3>
+        <p>صفحات وب را زیبا و واکنش‌گرا طراحی کن.</p>
+        <a href="#css">شروع یادگیری ←</a>
+      </article>
+
+      <article class="course">
+        <h3>JavaScript</h3>
+        <p>به صفحات وب قابلیت تعاملی اضافه کن.</p>
+        <a href="#javascript">شروع یادگیری ←</a>
+      </article>
+
+      <article class="course">
+        <h3>Django</h3>
+        <p>ساخت بک‌اند با زبان Python.</p>
+        <a href="#django">شروع یادگیری ←</a>
+      </article>
+    </section>
+
+    <section id="html">
+      <h2>درس اول: HTML چیست؟</h2>
+      <p>HTML زبان نشانه‌گذاری برای ساختاردهی صفحات وب است.</p>
+      <pre><code>&lt;h1&gt;سلام دنیا!&lt;/h1&gt;</code></pre>
+    </section>
+
+    <section id="css">
+      <h2>درس اول: CSS چیست؟</h2>
+      <p>CSS برای تعیین ظاهر و چیدمان عناصر صفحه استفاده می‌شود.</p>
+    </section>
+
+    <section id="javascript">
+      <h2>درس اول: JavaScript چیست؟</h2>
+      <p>JavaScript به صفحات وب رفتار و تعامل اضافه می‌کند.</p>
+    </section>
+
+    <section id="django">
+      <h2>درس اول: Django چیست؟</h2>
+      <p>Django یک چارچوب مبتنی بر Python برای توسعه برنامه‌های وب است.</p>
+    </section>
+  </main>
+
+  <footer>
+    آموزش رایگان برای همه
+  </footer>
+</body>
+</html>
+
