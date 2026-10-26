@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -571,49 +570,6 @@ button {
   </footer>
 
   <!-- انتخاب دوره و باز و بسته کردن صفحه درس‌ها -->
-  <script>
-    function showCourse(course) {
-      const courses = document.getElementById("courses");
-      const html = document.getElementById("html-lessons");
-      const css = document.getElementById("css-lessons");
-      const coming = document.getElementById("coming-soon");
-      const title = document.getElementById("coming-title");
-      const description = document.getElementById("coming-description");
-
-      courses.hidden = false;
-      html.hidden = true;
-      css.hidden = true;
-      coming.hidden = true;
-
-      if (course === "html") {
-        courses.hidden = true;
-        html.hidden = false;
-      } else if (course === "css") {
-        courses.hidden = true;
-        css.hidden = false;
-      } else if (course === "javascript") {
-        courses.hidden = true;
-        coming.hidden = false;
-        title.textContent = "دوره JavaScript";
-        description.textContent =
-          "این دوره در مرحله بعدی توسعه آکادمی اضافه خواهد شد.";
-      } else if (course === "django") {
-        courses.hidden = true;
-        coming.hidden = false;
-        title.textContent = "دوره Python و Django";
-        description.textContent =
-          "ابتدا Python و سپس Django را یاد می‌گیریم. اجرای Django به سرور پشتیبان نیاز دارد.";
-      }
-
-      const target = course === "html" ? html :
-        course === "css" ? css :
-        course === "list" ? courses : coming;
-
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  </script>
 
   <script src="script.js" defer></script>
 </body>
