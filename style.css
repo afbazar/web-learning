@@ -18,16 +18,30 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 24px;
 }
 
 body {
   margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
+  font-family: "Vazirmatn", Tahoma, sans-serif;
   font-size: 15px;
   line-height: 1.9;
   background: var(--bg);
   color: var(--text);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea {
+  font-family: Consolas, monospace;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
