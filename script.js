@@ -1,4 +1,3 @@
-```javascript
 "use strict";
 
 /* =========================
@@ -646,12 +645,9 @@ $$("[data-home]").forEach(link => {
 $$("[data-courses]").forEach(link => {
   link.addEventListener("click", event => {
     event.preventDefault();
-    if (currentCourse) {
-      openCourse(currentCourse.id);
-    } else {
-      showPage("home");
-      setTimeout(() => $("#courses").scrollIntoView({ behavior: "smooth" }), 100);
-    }
+    showPage("home");
+    history.replaceState(null, "", "#courses");
+    setTimeout(() => $("#courses").scrollIntoView({ behavior: "smooth", block: "start" }), 80);
   });
 });
 
@@ -1024,6 +1020,16 @@ function initialize() {
 
   const hash = window.location.hash;
 
+  if (hash === "#courses") {
+    showPage("home");
+    requestAnimationFrame(() => $("#courses").scrollIntoView({ block: "start" }));
+    return;
+  }
+  if (hash === "#about") {
+    showPage("about");
+    return;
+  }
+
   if (hash.startsWith("#course-")) {
     const courseId = hash.replace("#course-", "");
     if (courses[courseId]) {
@@ -1045,6 +1051,18 @@ function initialize() {
 
   showPage("home");
 }
+
+window.addEventListener("hashchange", () => {
+  const hash = window.location.hash;
+  if (hash === "#courses") {
+    showPage("home");
+    $("#courses").scrollIntoView({ behavior: "smooth", block: "start" });
+  } else if (hash === "#about") {
+    showPage("about");
+  } else if (hash === "" || hash === "#") {
+    showPage("home");
+  }
+});
 
 initialize();
 ```
