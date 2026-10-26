@@ -1,52 +1,29 @@
-
-/* =========================
-   تنظیمات پایه
-========================= */
-
-:root {
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --primary-light: #eff6ff;
-  --text: #172033;
-  --muted: #64748b;
-  --background: #f8fafc;
-  --surface: #ffffff;
-  --border: #e2e8f0;
-  --success: #15803d;
-  --radius: 18px;
-  --shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
-}
-
+```css
+/* تنظیمات پایه سایت */
 * {
   box-sizing: border-box;
 }
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 90px;
 }
 
 body {
   margin: 0;
-  font-family: "Vazirmatn", Tahoma, sans-serif;
-  color: var(--text);
-  background: var(--background);
-  line-height: 1.9;
-}
-
-[hidden] {
-  display: none !important;
+  padding: 0;
+  direction: rtl;
+  text-align: right;
+  font-family: "Vazirmatn", Tahoma, Arial, sans-serif;
+  line-height: 1.8;
+  background-color: #f5f7fb;
+  color: #263238;
 }
 
 button,
 input,
-textarea {
+textarea,
+select {
   font: inherit;
-}
-
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
 }
 
 button {
@@ -54,708 +31,257 @@ button {
 }
 
 a {
-  color: inherit;
+  color: #2563eb;
   text-decoration: none;
 }
 
-p {
-  margin-top: 0;
+a:hover {
+  text-decoration: underline;
 }
 
-h1,
-h2,
-h3 {
-  line-height: 1.5;
-  margin-top: 0;
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-.container {
-  width: min(1120px, calc(100% - 40px));
-  margin-inline: auto;
+/* مخفی‌کردن بخش‌های غیرفعال */
+[hidden] {
+  display: none !important;
 }
 
-.section {
-  padding-block: 76px;
-}
-
-.section-heading {
-  max-width: 700px;
-  margin: 0 auto 38px;
+/* سربرگ سایت */
+header {
+  padding: 24px 20px;
   text-align: center;
+  background: #1e3a8a;
+  color: #fff;
 }
 
-.section-heading h2 {
-  font-size: clamp(26px, 4vw, 36px);
-  margin-bottom: 12px;
+header h1 {
+  margin: 0 0 8px;
+  font-size: 2rem;
 }
 
-.section-heading p {
-  color: var(--muted);
-  margin-bottom: 0;
+header p {
+  margin: 0;
 }
 
-.eyebrow {
-  display: inline-block;
-  margin-bottom: 12px;
-  color: var(--primary);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-
-/* =========================
-   سربرگ و منو
-========================= */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255, 255, 255, 0.95);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(14px);
-}
-
-.nav {
-  min-height: 76px;
+/* منوی اصلی */
+.site-nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  font-size: 20px;
-  white-space: nowrap;
-}
-
-.brand-icon {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 13px;
-  background: var(--primary);
-  color: white;
-  direction: ltr;
-  font-weight: 800;
-  font-size: 17px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
   flex-wrap: wrap;
-  gap: 22px;
-}
-
-.nav-links a {
-  color: var(--muted);
-  font-size: 14px;
-  transition: color 0.2s;
-}
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-/* =========================
-   دکمه‌ها
-========================= */
-
-.btn {
-  min-height: 44px;
-  display: inline-flex;
   justify-content: center;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 19px;
-  border: 1px solid transparent;
-  border-radius: 11px;
-  font-size: 14px;
-  font-weight: 700;
-  transition:
-    background 0.2s,
-    color 0.2s,
-    border-color 0.2s,
-    transform 0.2s;
+  gap: 10px;
+  padding: 14px;
+  background: #fff;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.btn:hover {
-  transform: translateY(-1px);
+.site-nav button {
+  padding: 9px 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  background: #fff;
+  color: #1f2937;
+  transition: background-color 0.2s, color 0.2s;
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: white;
+.site-nav button:hover,
+.site-nav button:focus {
+  background: #1d4ed8;
+  color: #fff;
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
+/* محتوای اصلی */
+main {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  padding: 24px 18px;
 }
 
-.btn-outline {
-  background: white;
-  border-color: var(--border);
-  color: var(--text);
+section {
+  margin-bottom: 28px;
 }
 
-.btn-outline:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+h2 {
+  margin-top: 0;
+  color: #1e3a8a;
 }
 
-/* =========================
-   بخش معرفی
-========================= */
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: 100px 110px;
-  background:
-    radial-gradient(ellipse at 10% 10%, rgba(147, 197, 253, 0.28), transparent 42%),
-    linear-gradient(135deg, #eff6ff, #ffffff 65%);
-  border-bottom: 1px solid #eaf0f8;
+h3 {
+  color: #334155;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  max-width: 850px;
-  text-align: center;
-}
-
-.hero h1 {
-  margin-bottom: 20px;
-  font-size: clamp(32px, 5.5vw, 52px);
-  font-weight: 800;
-  letter-spacing: -1px;
-}
-
-.hero h1 span {
-  color: var(--primary);
-}
-
-.hero p {
-  max-width: 650px;
-  margin: 0 auto 28px;
-  color: var(--muted);
-  font-size: 17px;
-}
-
-.hero-decoration {
-  position: absolute;
-  left: 4%;
-  bottom: 10px;
-  color: rgba(37, 99, 235, 0.07);
-  direction: ltr;
-  font-size: clamp(50px, 12vw, 150px);
-  font-weight: 800;
-  pointer-events: none;
-}
-
-/* =========================
-   کارت‌های دوره
-========================= */
-
+/* کارت‌های دوره */
 .course-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
 }
 
 .course-card {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--surface);
-  box-shadow: var(--shadow);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-}
-
-.course-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 38px rgba(15, 23, 42, 0.1);
-}
-
-.course-icon {
-  width: 58px;
-  height: 58px;
-  display: grid;
-  place-items: center;
-  margin-bottom: 18px;
-  border-radius: 16px;
-  background: var(--primary-light);
-  color: var(--primary);
-  direction: ltr;
-  font-size: 24px;
-  font-weight: 800;
-}
-
-.css-card .course-icon {
-  background: #f0fdf4;
-  color: #15803d;
-}
-
-.js-card .course-icon {
-  background: #fefce8;
-  color: #a16207;
-}
-
-.django-card .course-icon {
-  background: #f0fdf4;
-  color: #166534;
-}
-
-.course-level {
-  margin-bottom: 8px;
-  color: var(--muted);
-  font-size: 12px;
-  font-weight: 600;
+  padding: 20px;
+  margin: 0;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 12px rgb(15 23 42 / 5%);
 }
 
 .course-card h3 {
-  margin-bottom: 10px;
-  font-size: 23px;
+  margin-top: 0;
 }
 
 .course-card p {
-  flex: 1;
-  margin-bottom: 20px;
-  color: var(--muted);
-  font-size: 14px;
+  color: #475569;
 }
 
-.course-meta {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px 20px;
-  margin-bottom: 20px;
-  color: var(--muted);
-  font-size: 12px;
+.course-card button,
+button.primary-button {
+  padding: 10px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
 }
 
-.course-card .btn {
-  width: 100%;
+.course-card button:hover,
+button.primary-button:hover {
+  background: #1d4ed8;
 }
 
-/* =========================
-   صفحه‌های دوره و درس‌ها
-========================= */
-
-.course-page {
-  min-height: 65vh;
-  background: var(--background);
+/* بخش‌های دوره و درس‌ها */
+.course-view {
+  padding: 22px;
+  margin: 20px 0;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid #e2e8f0;
 }
 
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-  padding: 10px 15px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: white;
-  color: var(--text);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.back-button:hover {
-  color: var(--primary);
-  border-color: var(--primary);
-}
-
-.lesson-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.lesson-card {
-  min-width: 0;
-  padding: 24px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.lesson-number {
-  display: inline-block;
-  margin-bottom: 10px;
-  padding: 4px 12px;
-  border-radius: 30px;
-  background: var(--primary-light);
-  color: var(--primary);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.lesson-card h3 {
-  margin-bottom: 10px;
-  font-size: 21px;
-}
-
-.lesson-card p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.lesson-card pre {
-  overflow-x: auto;
-  max-width: 100%;
+.lesson,
+.practice-box,
+.quiz-box {
   padding: 18px;
-  border: 1px solid #263449;
+  margin: 16px 0;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  background: #111827;
-  color: #e2e8f0;
+  background: #fff;
+}
+
+.lesson h3 {
+  margin-top: 0;
+}
+
+/* نمایش کدها */
+.lesson pre {
   direction: ltr;
   text-align: left;
-  line-height: 1.8;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 13px;
+  overflow-x: auto;
+  padding: 14px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
   white-space: pre;
 }
 
-.lesson-card code {
-  font-family: Consolas, "Courier New", monospace;
+.lesson code {
+  font-family: Consolas, Monaco, monospace;
+  white-space: pre;
 }
 
-.lesson-tip {
-  margin-bottom: 0;
+/* تمرین کدنویسی */
+.practice-box textarea {
+  display: block;
+  width: 100%;
+  min-height: 180px;
   padding: 12px;
-  border-radius: 10px;
-  background: #f0fdf4;
-  color: #166534 !important;
-}
-
-.course-footer {
-  margin-top: 32px;
-  padding: 25px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: white;
-}
-
-.course-footer p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.coming-card {
-  max-width: 720px;
-  margin: 20px auto;
-  padding: 45px 30px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: white;
-  box-shadow: var(--shadow);
-  text-align: center;
-}
-
-.coming-card h2 {
-  font-size: 30px;
-}
-
-.coming-card p {
-  color: var(--muted);
-}
-
-/* =========================
-   محیط تمرین
-========================= */
-
-.practice-section {
-  background: #f1f5f9;
-  border-block: 1px solid var(--border);
-}
-
-.practice-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
-  align-items: stretch;
-}
-
-.editor-panel,
-.preview-panel {
-  min-width: 0;
-  padding: 24px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: white;
-  box-shadow: var(--shadow);
-}
-
-.editor-panel label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 700;
-  font-size: 14px;
-}
-
-.editor-panel textarea {
-  display: block;
-  width: 100%;
-  min-height: 160px;
-  margin-bottom: 20px;
-  padding: 15px;
-  resize: vertical;
-  border: 1px solid #334155;
-  border-radius: 11px;
-  outline: none;
-  background: #111827;
-  color: #e2e8f0;
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 13px;
-  line-height: 1.8;
-  text-align: left;
+  margin: 10px 0 16px;
   direction: ltr;
-  tab-size: 2;
+  text-align: left;
+  font-family: Consolas, Monaco, monospace;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  resize: vertical;
 }
 
-.editor-panel textarea:focus {
-  border-color: #60a5fa;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+.practice-box textarea:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
 }
 
-.editor-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.preview-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
-}
-
-.preview-heading h3 {
-  margin: 0;
-  font-size: 18px;
-}
-
-.preview-status {
-  color: var(--success);
-  font-size: 12px;
-}
-
-#preview {
+#practice-output {
   display: block;
   width: 100%;
-  min-height: 440px;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: white;
+  min-height: 180px;
+  margin-top: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
 }
 
-/* =========================
-   آزمون
-========================= */
-
-.quiz-form {
-  max-width: 800px;
-  margin-inline: auto;
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: white;
-  box-shadow: var(--shadow);
-}
-
+/* آزمون */
 .quiz-question {
-  min-width: 0;
-  margin: 0 0 24px;
-  padding: 0 0 22px;
-  border: 0;
-  border-bottom: 1px solid var(--border);
-}
-
-.quiz-question legend {
-  width: 100%;
-  margin-bottom: 14px;
-  font-weight: 700;
+  margin-bottom: 22px;
 }
 
 .quiz-question label {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin-bottom: 10px;
-  padding: 10px 12px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: #f8fafc;
+  display: block;
+  margin: 8px 0;
   cursor: pointer;
-  font-size: 14px;
-}
-
-.quiz-question label:hover {
-  border-color: #bfdbfe;
-  background: #eff6ff;
 }
 
 .quiz-question input {
-  margin-top: 8px;
-  accent-color: var(--primary);
+  margin-left: 8px;
 }
 
-.quiz-result {
-  margin: 22px 0 0;
-  padding: 15px;
-  border: 1px solid #bbf7d0;
-  border-radius: 12px;
-  background: #f0fdf4;
-  color: #166534;
-  font-weight: 600;
+.quiz-box button {
+  padding: 10px 18px;
+  border: 0;
+  border-radius: 8px;
+  background: #15803d;
+  color: #fff;
 }
 
-/* =========================
-   درباره ما و پابرگ
-========================= */
-
-.about-section {
-  background: white;
+.quiz-box button:hover {
+  background: #166534;
 }
 
-.about-content {
-  max-width: 760px;
+/* پابرگ */
+footer {
+  padding: 20px;
   text-align: center;
+  background: #e2e8f0;
+  color: #475569;
 }
 
-.about-content h2 {
-  font-size: 30px;
-}
-
-.about-content p {
-  margin-bottom: 0;
-  color: var(--muted);
-}
-
-.site-footer {
-  padding-block: 24px;
-  border-top: 1px solid var(--border);
-  background: #f8fafc;
-}
-
-.footer-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* =========================
-   واکنش‌گرایی
-========================= */
-
-@media (max-width: 800px) {
-  .nav {
-    padding-block: 14px;
-    flex-direction: column;
-    align-items: flex-start;
+/* نمایش در موبایل */
+@media (max-width: 600px) {
+  header {
+    padding: 20px 14px;
   }
 
-  .nav-links {
-    width: 100%;
-    gap: 12px 18px;
+  header h1 {
+    font-size: 1.6rem;
   }
 
-  .hero {
-    padding-block: 75px 85px;
+  main {
+    padding: 18px 12px;
   }
 
-  .course-grid,
-  .lesson-list,
-  .practice-grid {
-    grid-template-columns: 1fr;
+  .course-view {
+    padding: 14px;
   }
 
-  .section {
-    padding-block: 55px;
+  .lesson,
+  .practice-box,
+  .quiz-box {
+    padding: 14px;
   }
 
-  .course-card {
-    padding: 23px;
-  }
-
-  .editor-panel,
-  .preview-panel {
-    padding: 18px;
-  }
-
-  #preview {
-    min-height: 350px;
+  .site-nav button {
+    flex: 1 1 auto;
   }
 }
-
-@media (max-width: 480px) {
-  .container {
-    width: calc(100% - 28px);
-  }
-
-  .hero h1 {
-    font-size: 31px;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  .nav-links {
-    gap: 8px 14px;
-  }
-
-  .nav-links a {
-    font-size: 12px;
-  }
-
-  .section-heading h2 {
-    font-size: 26px;
-  }
-
-  .lesson-card {
-    padding: 18px;
-  }
-
-  .lesson-card pre {
-    padding: 13px;
-    font-size: 12px;
-  }
-
-  .quiz-form {
-    padding: 18px;
-  }
-
-  .footer-content {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-}
+```
