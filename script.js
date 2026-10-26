@@ -1,10 +1,3 @@
-```javascript
-"use strict";
-
-/* =========================
-   انتخاب دوره و نمایش درس‌ها
-========================= */
-
 function showCourse(course) {
   const courses = document.getElementById("courses");
   const htmlLessons = document.getElementById("html-lessons");
