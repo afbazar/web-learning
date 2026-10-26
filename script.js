@@ -1,5 +1,73 @@
-
+```javascript
 "use strict";
+
+/* =========================
+   انتخاب دوره و نمایش درس‌ها
+========================= */
+
+function showCourse(course) {
+  const courses = document.getElementById("courses");
+  const htmlLessons = document.getElementById("html-lessons");
+  const cssLessons = document.getElementById("css-lessons");
+  const comingSoon = document.getElementById("coming-soon");
+
+  const comingTitle = document.getElementById("coming-title");
+  const comingDescription = document.getElementById("coming-description");
+
+  if (!courses || !htmlLessons || !cssLessons) {
+    return;
+  }
+
+  // ابتدا تمام صفحات دوره را مخفی می‌کنیم.
+  courses.hidden = true;
+  htmlLessons.hidden = true;
+  cssLessons.hidden = true;
+
+  if (comingSoon) {
+    comingSoon.hidden = true;
+  }
+
+  let target = courses;
+
+  if (course === "html") {
+    htmlLessons.hidden = false;
+    target = htmlLessons;
+  } else if (course === "css") {
+    cssLessons.hidden = false;
+    target = cssLessons;
+  } else if (course === "javascript" || course === "django") {
+    if (comingSoon) {
+      comingSoon.hidden = false;
+      target = comingSoon;
+
+      if (course === "javascript") {
+        comingTitle.textContent = "دوره JavaScript";
+        comingDescription.textContent =
+          "درس‌های JavaScript در مرحله بعدی به آکادمی اضافه می‌شوند.";
+      } else {
+        comingTitle.textContent = "دوره Python و Django";
+        comingDescription.textContent =
+          "برای ساخت برنامه‌های Django به یک محیط پشتیبان سمت سرور نیاز داریم.";
+      }
+    } else {
+      courses.hidden = false;
+      target = courses;
+    }
+  } else {
+    // بازگشت به فهرست دوره‌ها
+    courses.hidden = false;
+    target = courses;
+  }
+
+  target.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+}
+
+/* =========================
+   محیط اجرای HTML و CSS
+========================= */
 
 document.addEventListener("DOMContentLoaded", function () {
   const htmlInput = document.getElementById("htmlCode");
@@ -7,128 +75,145 @@ document.addEventListener("DOMContentLoaded", function () {
   const preview = document.getElementById("preview");
   const runButton = document.getElementById("runCode");
   const resetButton = document.getElementById("resetCode");
-  const status = document.querySelector(".preview-status");
+  const previewStatus = document.querySelector(".preview-status");
 
   const initialHTML = htmlInput ? htmlInput.value : "";
   const initialCSS = cssInput ? cssInput.value : "";
 
   function runCode() {
     if (!htmlInput || !cssInput || !preview) {
-      console.error("عناصر محیط تمرین پیدا نشدند.");
-      if (status) status.textContent = "خطا: عناصر تمرین پیدا نشدند";
       return;
     }
 
-    const html = htmlInput.value;
-    const css = cssInput.value;
+    const htmlCode = htmlInput.value;
+    const cssCode = cssInput.value;
 
-    const page = `<!DOCTYPE html>
+    const output = `<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.0.3/Vazirmatn-font-face.min.css">
 <style>
 body {
   font-family: "Vazirmatn", Tahoma, sans-serif;
-  padding: 20px;
-  line-height: 1.8;
+  line-height: 1.9;
+  padding: 16px;
+  color: #1e293b;
 }
-${css}
+${cssCode}
 </style>
 </head>
 <body>
-${html}
+${htmlCode}
 </body>
 </html>`;
 
-    preview.srcdoc = page;
+    preview.srcdoc = output;
 
-    if (status) {
-      status.textContent = "در حال اجرا...";
+    if (previewStatus) {
+      previewStatus.textContent = "کد اجرا شد";
     }
-
-    preview.onload = function () {
-      if (status) status.textContent = "اجرا شد";
-    };
   }
 
   if (runButton) {
     runButton.addEventListener("click", runCode);
-  } else {
-    console.error("دکمه runCode در HTML پیدا نشد.");
   }
 
   if (resetButton) {
     resetButton.addEventListener("click", function () {
-      htmlInput.value = initialHTML;
-      cssInput.value = initialCSS;
+      if (htmlInput) {
+        htmlInput.value = initialHTML;
+      }
+
+      if (cssInput) {
+        cssInput.value = initialCSS;
+      }
+
       runCode();
+
+      if (previewStatus) {
+        previewStatus.textContent = "کد بازنشانی شد";
+      }
     });
   }
 
+  // اجرای اولیه نمونه کد
   if (htmlInput && cssInput && preview) {
     runCode();
+
+    if (previewStatus) {
+      previewStatus.textContent = "آماده اجرا";
+    }
   }
 
-  // منوی موبایل
-  const menuToggle = document.getElementById("menuToggle");
-  const navLinks = document.getElementById("navLinks");
+  /* =========================
+     آزمون HTML
+  ========================= */
 
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener("click", function () {
-      const open = navLinks.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", String(open));
-    });
+  const quizForm = document.getElementById("quizForm");
+  const quizResult = document.getElementById("quizResult");
+  const resetQuizButton = document.getElementById("resetQuiz");
 
-    navLinks.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
-        menuToggle.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
+  const answers = {
+    q1: "b",
+    q2: "c",
+    q3: "a"
+  };
 
-  // سال جاری
-  const year = document.getElementById("currentYear");
-  if (year) year.textContent = new Date().getFullYear();
-
-  // آزمون
-  const quiz = document.getElementById("quizForm");
-  const result = document.getElementById("quizResult");
-  const resetQuiz = document.getElementById("resetQuiz");
-
-  if (quiz && result) {
-    quiz.addEventListener("submit", function (event) {
+  if (quizForm && quizResult) {
+    quizForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
-      const answers = { q1: "b", q2: "c", q3: "a" };
       let score = 0;
+      let unanswered = 0;
 
       Object.keys(answers).forEach(function (question) {
-        const selected = quiz.querySelector(
-          'input[name="' + question + '"]:checked'
+        const selected = quizForm.querySelector(
+          `input[name="${question}"]:checked`
         );
 
-        if (selected && selected.value === answers[question]) {
+        if (!selected) {
+          unanswered++;
+        } else if (selected.value === answers[question]) {
           score++;
         }
       });
 
-      result.hidden = false;
-      result.textContent =
-        "نتیجه: " + score + " از 3 پاسخ صحیح. " +
-        (score === 3
-          ? "همه پاسخ‌ها درست هستند."
-          : "درس‌ها را مرور کن و دوباره تلاش کن.");
+      quizResult.hidden = false;
+
+      if (unanswered > 0) {
+        quizResult.textContent =
+          `به همه سؤال‌ها پاسخ نداده‌ای. پاسخ درست فعلی: ${score} از 3.`;
+      } else {
+        quizResult.textContent =
+          `نتیجه آزمون: ${score} از 3 پاسخ درست.`;
+
+        if (score === 3) {
+          quizResult.textContent += " همه پاسخ‌ها درست هستند.";
+        } else {
+          quizResult.textContent += " پاسخ‌ها را مرور کن و دوباره تلاش کن.";
+        }
+      }
     });
   }
 
-  if (resetQuiz && quiz && result) {
-    resetQuiz.addEventListener("click", function () {
-      quiz.reset();
-      result.hidden = true;
-      result.textContent = "";
+  if (resetQuizButton && quizForm && quizResult) {
+    resetQuizButton.addEventListener("click", function () {
+      quizForm.reset();
+      quizResult.hidden = true;
+      quizResult.textContent = "";
     });
   }
+
+  /* =========================
+     سال جاری در صورت وجود
+  ========================= */
+
+  const yearElement = document.getElementById("currentYear");
+
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
 });
+```
