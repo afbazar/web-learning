@@ -529,7 +529,7 @@ document.getElementById("increase")
         }
       }
     ]
-  }
+  },
   webbasics: {
     id: "webbasics", title: "مبانی وب", fullTitle: "مفاهیم پایه وب؛ از اینترنت تا ساخت وب‌سایت",
     description: "قبل از ورود به HTML، CSS و JavaScript، با زبان ساده بفهم وب چگونه کار می‌کند؛ از مرورگر و سرور تا دامنه، HTTP، API و امنیت.",
