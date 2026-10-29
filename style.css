@@ -570,3 +570,5 @@ body {
 .cognitive-card { border-color:rgba(96,145,230,.22); }
 .cognitive-card .course-icon { font-size:15px; }
 @media(max-width:700px) { .cognitive-intro { padding:16px; } }
+
+.cognitive-featured-link{display:flex;align-items:center;justify-content:space-between;gap:18px;margin:0 0 20px;padding:18px 20px;border:1px solid #cbdafa;border-radius:16px;background:linear-gradient(105deg,#eff5ff,#f7faff)}.cognitive-featured-link strong{display:block;color:#183f9d;font-size:15px}.cognitive-featured-link p{margin:3px 0 0;color:#5b6b87;font-size:12px;line-height:1.9}.cognitive-featured-link a{flex-shrink:0;padding:9px 14px;background:#2457d6;color:white;border-radius:10px;font-size:12px;font-weight:700}@media(max-width:600px){.cognitive-featured-link{align-items:flex-start;flex-direction:column}}
