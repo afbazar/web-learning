@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2563eb"><title>حل مسئله | تک‌لب</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css?v=5"><style>
 .ps-hero{--course-color:#3b82f6}.ps-hero .course-icon{background:rgba(59,130,246,.18);color:#9fc2ff}.ps-hero h1{color:#fff}.ps-hero .hero-label{font-size:10px;letter-spacing:1.5px;color:#79b9ff;font-weight:800}.ps-hero p{line-height:2.2}.ps-hero-meta span{display:inline-flex;align-items:center;gap:6px}.ps-content{align-items:start}.ps-main .section-heading{margin-bottom:18px}.ps-curriculum{display:grid;gap:10px}.ps-curriculum-item{cursor:pointer}.ps-curriculum-item:hover .lesson-number{background:#2854a9;color:#fff}.ps-aside .aside-card{position:sticky;top:22px}.ps-aside .aside-card p{line-height:1.9}.ps-lesson-card{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:25px;margin:16px 0;scroll-margin-top:24px}.ps-lesson-card h2{font-size:20px;line-height:1.8;margin:5px 0 12px;color:#f2f6ff}.ps-lesson-card h3{font-size:14px;color:#dce7ff;margin:19px 0 7px}.ps-lesson-card p,.ps-lesson-card li{color:#aebbd2;font-size:12px;line-height:2.2}.ps-lesson-card .note{background:#172d50;border-right:3px solid #5790ff;color:#d6e5ff;padding:13px 16px;border-radius:9px;font-size:12px;margin:14px 0}.ps-lesson-card .warning{background:#382d1b;border-color:#e2ad4b;color:#ffe4a8}.ps-lesson-card .example{background:#132b37;border-right:3px solid #36b7a8;color:#d4f4ed;padding:13px 16px;border-radius:9px;margin:13px 0}.ps-lesson-card .example p,.ps-lesson-card .example li{color:#c0d9d7}.ps-lesson-card .example b{color:#68ddce}.ps-lesson-card .exercise{background:#172746;border:1px dashed #5479bd;padding:15px;border-radius:12px;margin-top:16px}.ps-lesson-card .exercise h3{color:#9fc2ff;margin-top:0}.ps-lesson-card .table{width:100%;border-collapse:collapse;font-size:11px;margin:12px 0}.ps-lesson-card .table th,.ps-lesson-card .table td{border:1px solid #34425b;padding:9px;text-align:right;color:#c4d0e4}.ps-lesson-card .table th{background:#202e49;color:#e7efff}.ps-lesson-card .steps{padding-right:22px}.ps-lesson-card .refs a{display:block;color:#83b5ff;font-size:12px;padding:5px 0}.ps-lesson-card .refs a:hover{color:#b6d5ff}.ps-bottom-nav{display:flex;justify-content:space-between;gap:12px;margin:24px 0 65px}.ps-bottom-nav a{border:1px solid var(--line);border-radius:10px;padding:10px 15px;color:#a9c8ff;font-size:12px}.ps-bottom-nav a:hover{background:var(--surface-2)}@media(max-width:900px){.ps-content{grid-template-columns:1fr}.ps-aside{display:none}}@media(max-width:650px){.ps-hero{padding:24px}.ps-hero h1{font-size:24px}.ps-lesson-card{padding:17px}.ps-lesson-card .table{display:block;overflow-x:auto;white-space:nowrap}.ps-bottom-nav{flex-direction:column}}
+</style><style>
+/* Course-page behavior: show curriculum first, then one selected lesson */
+.ps-main>.ps-lesson-card{display:none}
+.ps-main>.ps-lesson-card.ps-current-lesson{display:block;animation:psFade .22s ease}
+.ps-curriculum-item{display:flex;align-items:center;text-align:right;width:100%;text-decoration:none;gap:14px;padding:15px 17px;border:1px solid #dfe8f5;border-radius:14px;background:#fff;color:#1d3558;transition:.18s}
+.ps-curriculum-item:hover{border-color:#9dbcf2;background:#f4f8ff;transform:translateY(-2px)}
+.ps-curriculum-item .lesson-number{display:grid;place-items:center;flex:0 0 38px;height:38px;border-radius:11px;background:#eaf1ff;color:#2457d6;font-weight:800;font-size:12px}
+.ps-curriculum-item .lesson-item-info{display:flex;flex:1;flex-direction:column;gap:3px}
+.ps-curriculum-item .lesson-item-info strong{font-size:13px;color:#203a61}
+.ps-curriculum-item .lesson-item-info small{font-size:10px;color:#75849a}
+.ps-curriculum-item .lesson-item-check{color:#3974d7;font-size:17px}
+.ps-lesson-back{display:flex;align-items:center;gap:8px;margin:0 0 15px;padding:10px 14px;border:1px solid #d8e5f8;border-radius:10px;background:#eff5ff;color:#2457bd;font:600 12px Vazirmatn,sans-serif;cursor:pointer}
+.ps-lesson-back:hover{background:#e3eeff}
+.ps-lesson-card{scroll-margin-top:100px}
+.ps-lesson-card .section-kicker{display:inline-block;font-size:10px;color:#3474df;font-weight:800;letter-spacing:1px}
+@keyframes psFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){.ps-curriculum-item{padding:12px;gap:10px}.ps-curriculum-item .lesson-item-info strong{font-size:12px}}
 </style></head><body>
 <header class="topbar"><a href="index.html" class="brand"><span class="brand-mark">T<span>.</span></span><span class="brand-name">تک‌لب</span></a><nav class="main-nav"><a href="index.html" class="nav-link">خانه</a><a href="index.html#courses" class="nav-link">دوره‌ها</a><a href="index.html#cognitive" class="nav-link active">مهارت‌های شناختی</a></nav><div class="top-actions"><a href="index.html#cognitive" class="button button-small button-primary">بازگشت به مسیرها ←</a></div></header>
 <main class="container">
@@ -32,4 +49,43 @@
 <section class="ps-lesson-card" id="ch12"><span class="tag">فصل ۱۲</span><h2>ارزیابی نتیجه، خطاهای رایج و یادگیری</h2><p>پس از اجرا، فقط نپرس «آیا بهتر شد؟»؛ بپرس نسبت به چه خط مبنایی، با چه شاخصی، در چه بازه‌ای و با چه پیامدهای جانبی؟ شاخص نتیجه اثر نهایی را می‌سنجد؛ شاخص فرایند نشان می‌دهد کارها چگونه انجام شده‌اند؛ و شاخص محافظ کمک می‌کند بهبود یک بخش به بخش دیگر آسیب نزند.</p><div class="example"><b>مثال مرکز تماس:</b><p>هدف کاهش زمان مکالمه است. اگر فقط میانگین زمان را کم کنیم، شاید کیفیت پاسخ افت کند. بنابراین زمان مکالمه را همراه با حل مسئله در تماس اول و رضایت مشتری بررسی می‌کنیم.</p></div><h3>خطاهای پرتکرار</h3><ul class="steps"><li>پریدن به راه‌حل قبل از تعریف مسئله</li><li>تکیه بر اولین توضیحی که به ذهن می‌رسد</li><li>سرزنش افراد به‌جای بررسی فرایند و شرایط</li><li>جمع‌آوری داده زیاد اما نامرتبط</li><li>نادیده گرفتن دیدگاه افراد درگیر مسئله</li><li>تغییر هم‌زمان چند عامل و ناتوانی در تشخیص اثر هرکدام</li><li>اعلام موفقیت بدون خط مبنا و شاخص</li><li>بی‌توجهی به آثار ناخواسته و پایداری راه‌حل</li></ul><div class="exercise"><h3>پروژه پایانی دوره</h3><p>یک مسئله واقعی از تحصیل، زندگی، محل کار یا محصول دیجیتال انتخاب کن و گزارشی شامل این موارد تهیه کن:</p><ol class="steps"><li>تعریف مسئله و وضعیت مطلوب</li><li>شواهد و خط مبنا</li><li>علت‌های احتمالی و روش بررسی آن‌ها</li><li>تحلیل با پنج چرا یا نمودار ایشیکاوا</li><li>حداقل سه راه‌حل و ماتریس مقایسه</li><li>فرضیه و برنامه آزمایش</li><li>شاخص‌های موفقیت و پیامدهای جانبی</li><li>نتیجه، محدودیت‌ها و آموخته‌ها</li></ol></div></section><section class="ps-lesson-card" id="methods"><h2>جعبه‌ابزار روش‌ها؛ کدام را چه زمانی به کار ببریم؟</h2><table class="table"><tr><th>روش</th><th>کاربرد</th><th>محدودیت</th></tr><tr><td>۵ چرا</td><td>کاوش زنجیره علت‌ها در مسئله مشخص</td><td>ممکن است چندعلتی بودن را ساده‌سازی کند.</td></tr><tr><td>ایشیکاوا</td><td>دسته‌بندی علت‌های احتمالی</td><td>علت‌ها را اثبات نمی‌کند.</td></tr><tr><td>پارتو</td><td>اولویت‌بندی بر اساس فراوانی یا اثر</td><td>عامل کم‌تکرار اما پرخطر را نادیده نگیر.</td></tr><tr><td>تفکر سیستمی</td><td>بررسی روابط، بازخورد و پیامدها</td><td>نیازمند شناخت زمینه است.</td></tr><tr><td>تفکر طراحی</td><td>مسائل انسان‌محور و نیاز کاربران</td><td>نمونه کوچک را نماینده کل بازار فرض نکن.</td></tr><tr><td>ماتریس تصمیم</td><td>مقایسه شفاف گزینه‌ها</td><td>امتیازها به فرض‌ها و وزن‌ها وابسته‌اند.</td></tr><tr><td>PDCA</td><td>بهبود تکرارشونده</td><td>بدون شاخص و بازبینی تشریفاتی می‌شود.</td></tr><tr><td>DMAIC</td><td>بهبود فرایندهای موجود و قابل اندازه‌گیری</td><td>برای مسئله ساده ممکن است بیش از حد سنگین باشد.</td></tr></table></section>
 <section class="ps-lesson-card" id="references"><h2>منابع و مطالعه بیشتر</h2><p>این دوره از چارچوب‌های شناخته‌شده حل مسئله و بهبود فرایند الهام گرفته است. روش‌ها ابزارهای کمکی‌اند و نسخه قطعی برای همه مسائل نیستند.</p><div class="refs"><a href="https://asq.org/quality-resources/root-cause-analysis" target="_blank" rel="noopener">ASQ — Root Cause Analysis</a><a href="https://asq.org/quality-resources/fishbone" target="_blank" rel="noopener">ASQ — Fishbone Diagram</a><a href="https://asq.org/quality-resources/pdca-cycle" target="_blank" rel="noopener">ASQ — Plan-Do-Check-Act (PDCA)</a><a href="https://asq.org/quality-resources/dmaic" target="_blank" rel="noopener">ASQ — DMAIC</a><a href="https://dschool.stanford.edu/resources/getting-started-with-design-thinking" target="_blank" rel="noopener">Stanford d.school — Design Thinking</a><a href="https://www.designkit.org/" target="_blank" rel="noopener">IDEO.org — Design Kit / Human-Centered Design</a><a href="https://www.toyota-global.com/company/vision_philosophy/toyota_production_system/" target="_blank" rel="noopener">Toyota — Toyota Production System</a><a href="https://www.nist.gov/baldrige" target="_blank" rel="noopener">NIST — Baldrige Performance Excellence</a></div><div class="note warning">در مسائل مرتبط با ایمنی، سلامت، حقوق یا امور مالی پرریسک، از این چارچوب آموزشی به‌تنهایی برای تصمیم قطعی استفاده نکن؛ از متخصص واجد صلاحیت و شواهد معتبر کمک بگیر.</div></section>
 <div class="ps-bottom-nav"><a href="index.html#cognitive">← بازگشت به مهارت‌های شناختی</a><a href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false">بازگشت به بالای صفحه ↑</a></div>
-</div><aside class="course-aside ps-aside"><div class="aside-card"><span class="aside-icon">◎</span><h3>یادگیری مرحله‌به‌مرحله</h3><p>از تعریف مسئله شروع کن و با اجرای راه‌حل و ارزیابی نتیجه پیش برو.</p><div class="aside-line"></div><span class="aside-icon">⌘</span><h3>مثال‌های واقعی</h3><p>نمونه‌هایی از زندگی روزمره، کسب‌وکار، محصول دیجیتال و کار تیمی.</p><div class="aside-line"></div><span class="aside-icon">✓</span><h3>تمرین و پروژه پایانی</h3><p>در پایان دوره یک مسئله واقعی را با ابزارهای آموخته‌شده تحلیل می‌کنی.</p><div class="aside-line"></div><span class="aside-icon">↗</span><h3>منابع علمی</h3><p>پیوند به منابع و چارچوب‌های معتبر برای مطالعه بیشتر.</p></div></aside></div></main><footer class="site-footer" style="text-align:center;padding:25px;color:var(--muted);font-size:11px">تک‌لب · یاد بگیر، تمرین کن، بهتر حل کن</footer></body></html>
+</div><aside class="course-aside ps-aside"><div class="aside-card"><span class="aside-icon">◎</span><h3>یادگیری مرحله‌به‌مرحله</h3><p>از تعریف مسئله شروع کن و با اجرای راه‌حل و ارزیابی نتیجه پیش برو.</p><div class="aside-line"></div><span class="aside-icon">⌘</span><h3>مثال‌های واقعی</h3><p>نمونه‌هایی از زندگی روزمره، کسب‌وکار، محصول دیجیتال و کار تیمی.</p><div class="aside-line"></div><span class="aside-icon">✓</span><h3>تمرین و پروژه پایانی</h3><p>در پایان دوره یک مسئله واقعی را با ابزارهای آموخته‌شده تحلیل می‌کنی.</p><div class="aside-line"></div><span class="aside-icon">↗</span><h3>منابع علمی</h3><p>پیوند به منابع و چارچوب‌های معتبر برای مطالعه بیشتر.</p></div></aside></div></main><footer class="site-footer" style="text-align:center;padding:25px;color:var(--muted);font-size:11px">تک‌لب · یاد بگیر، تمرین کن، بهتر حل کن</footer><script>
+(function(){
+ const list=document.querySelector('.ps-curriculum');
+ const heading=document.querySelector('.ps-main .section-heading');
+ const items=[...document.querySelectorAll('.ps-curriculum-item')];
+ const lessons=[...document.querySelectorAll('.ps-main>.ps-lesson-card')];
+ if(!list||!lessons.length)return;
+ const back=document.createElement('button');
+ back.type='button';back.className='ps-lesson-back';back.textContent='← بازگشت به فهرست سرفصل‌ها';
+ function showCurriculum(){
+   lessons.forEach(x=>x.classList.remove('ps-current-lesson'));
+   list.hidden=false;if(heading)heading.hidden=false;
+   back.remove();
+   document.querySelector('.ps-main').scrollIntoView({behavior:'smooth',block:'start'});
+   history.replaceState(null,'',location.pathname+location.search);
+ }
+ function showLesson(id){
+   const target=document.getElementById(id);
+   if(!target||!lessons.includes(target))return;
+   lessons.forEach(x=>x.classList.toggle('ps-current-lesson',x===target));
+   list.hidden=true;if(heading)heading.hidden=true;
+   if(!back.isConnected)target.parentNode.insertBefore(back,target);
+   target.scrollIntoView({behavior:'smooth',block:'start'});
+   history.replaceState(null,'','#'+id);
+ }
+ items.forEach(a=>a.addEventListener('click',e=>{
+   const id=a.getAttribute('href').slice(1);
+   if(!document.getElementById(id))return;
+   e.preventDefault();showLesson(id);
+ }));
+ back.addEventListener('click',showCurriculum);
+ window.addEventListener('hashchange',()=>{
+   const id=location.hash.slice(1);
+   if(lessons.some(x=>x.id===id))showLesson(id);
+ });
+ const initial=location.hash.slice(1);
+ if(lessons.some(x=>x.id===initial))showLesson(initial);
+ else showCurriculum();
+})();
+</script></body></html>
